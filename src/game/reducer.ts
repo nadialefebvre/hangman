@@ -8,6 +8,10 @@ const initialState: GameState = {
     letter: String.fromCharCode(i + 97),
     guessState: GuessState.Untouched,
   })),
+  // letters: [...Array(29)].map((_, i) => ({
+  //   letter: i < 26 ? String.fromCharCode(i + 97) : ["å", "ä", "ö"][i - 26],
+  //   guessState: GuessState.Untouched,
+  // })),
 }
 
 const gameReducer: Reducer<GameState, GameAction> = (

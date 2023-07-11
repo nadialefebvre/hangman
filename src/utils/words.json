@@ -1,0 +1,50 @@
+{
+  "noun": [
+    "château",
+    "montagne",
+    "plage",
+    "forêt",
+    "étoile",
+    "aventure",
+    "parapluie",
+    "chocolat",
+    "lune",
+    "bicyclette"
+  ],
+  "verb": [
+    "voyager",
+    "chanter",
+    "marcher",
+    "nager",
+    "dessiner",
+    "danser",
+    "écouter",
+    "courir",
+    "découvrir",
+    "apprendre"
+  ],
+  "adjective": [
+    "beau",
+    "joyeux",
+    "calme",
+    "élégant",
+    "intelligent",
+    "moderne",
+    "curieux",
+    "sérieux",
+    "fort",
+    "heureux"
+  ],
+  "adverb": [
+    "rapidement",
+    "silencieusement",
+    "clairement",
+    "facilement",
+    "gentiment",
+    "fréquemment",
+    "doucement",
+    "brillamment",
+    "souvent",
+    "honnêtement"
+  ]
+}

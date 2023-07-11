@@ -1,4 +1,5 @@
 import React, { useContext } from "react"
+import { IntlProvider } from "react-intl"
 
 import styled from "styled-components/macro"
 
@@ -15,6 +16,13 @@ import { GuessState, LetterItem } from "./game/types"
 
 import "./index.css"
 
+export const userLanguage = navigator.language.split("-")[0]
+
+let localeData = require("./en.json")
+if (userLanguage === "fr") {
+  localeData = require("./fr.json")
+}
+
 const App: React.FC = () => {
   const { state } = useContext(GameContext)
   console.log(state.randomWord)
@@ -28,27 +36,29 @@ const App: React.FC = () => {
   const steps: number[] = [1, 2, 3, 4, 5, 6, 7, 8]
 
   return (
-    <OuterWrapper
-      className={state.gamePhase === "Lose" ? "has-background" : ""}
-    >
-      {state.gamePhase === "Play" &&
-        steps.map((step: number) => (
-          <div
-            key={step}
-            className={`step${step} ${
-              step <= badGuesses.length ? "has-background" : ""
-            }`}
-          />
-        ))}
-      <InnerWrapper>
-        <Header test={badGuesses.length} />
-        {state.gamePhase === "Start" && <Start />}
-        {state.gamePhase === "Play" && <Play />}
-        {state.gamePhase === "Win" && <Win />}
-        {state.gamePhase === "Lose" && <Lose />}
-        <Footer />
-      </InnerWrapper>
-    </OuterWrapper>
+    <IntlProvider locale={userLanguage} messages={localeData}>
+      <OuterWrapper
+        className={state.gamePhase === "Lose" ? "has-background" : ""}
+      >
+        {state.gamePhase === "Play" &&
+          steps.map((step: number) => (
+            <div
+              key={step}
+              className={`step${step} ${
+                step <= badGuesses.length ? "has-background" : ""
+              }`}
+            />
+          ))}
+        <InnerWrapper>
+          <Header test={badGuesses.length} />
+          {state.gamePhase === "Start" && <Start />}
+          {state.gamePhase === "Play" && <Play />}
+          {state.gamePhase === "Win" && <Win />}
+          {state.gamePhase === "Lose" && <Lose />}
+          <Footer />
+        </InnerWrapper>
+      </OuterWrapper>
+    </IntlProvider>
   )
 }
 

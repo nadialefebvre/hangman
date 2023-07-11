@@ -1,4 +1,5 @@
 import React, { useContext } from "react"
+import { useIntl } from "react-intl"
 
 import styled from "styled-components/macro"
 
@@ -6,10 +7,12 @@ import Button from "../components/common/Button"
 import { GameContext } from "../game/context"
 
 import { fetchValidRandomWord } from "../utils/fetchValidRandomWord"
+import messages from "../messages"
 
 const Start: React.FC = () => {
   const types: string[] = ["noun", "verb", "adjective", "adverb", "any type"]
 
+  const { formatMessage } = useIntl()
   const { dispatch } = useContext(GameContext)
 
   const handleFetchRandomWord = async (type: string): Promise<void> => {
@@ -23,7 +26,9 @@ const Start: React.FC = () => {
 
   return (
     <>
-      <Preamble>Choose a type or go for any type</Preamble>
+      <Preamble>{formatMessage(messages.instructions)}</Preamble>
+
+      {/* <Preamble>Choose a type or go for any type</Preamble> */}
       <ButtonsDiv>
         {types.map((type: string) => (
           <Button key={type} onClick={() => handleFetchRandomWord(type)}>
