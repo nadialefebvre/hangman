@@ -1,5 +1,3 @@
-import { userLanguage } from "../App"
-
 import data from "./words.json"
 
 interface WordData {
@@ -10,7 +8,7 @@ export const fetchValidRandomWord = async (
   type: string
 ): Promise<string | void> => {
   try {
-    if (userLanguage === "fr") {
+    if (navigator.language.split("-")[0] === "fr") {
       const wordsListToUse = (data as WordData)[type]
       const randomWord =
         wordsListToUse[Math.floor(Math.random() * wordsListToUse.length)]
@@ -25,12 +23,12 @@ export const fetchValidRandomWord = async (
       }
     )
     const json = await res.json()
-    console.log(json)
-    const wordInLowercase = (word: string): string => {
-      return word.toLowerCase()
+
+    const isLowercase = (word: string): boolean => {
+      return word === word.toLowerCase()
     }
 
-    if (json.word === wordInLowercase(json.word)) {
+    if (isLowercase(json.word)) {
       return json.word
     } else {
       return fetchValidRandomWord(type)
