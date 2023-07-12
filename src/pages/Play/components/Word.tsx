@@ -37,7 +37,11 @@ const StyledWord = styled.div`
   margin-bottom: 20px;
 `
 
-const SingleLetter = styled.span<{ isVisible: boolean }>`
+interface SingleLetterProps {
+  isVisible: boolean
+}
+
+const SingleLetter = styled.span<SingleLetterProps>`
   border-bottom: 2px solid #000;
   margin: 10px;
   padding: 10px;

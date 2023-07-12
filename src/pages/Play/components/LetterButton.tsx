@@ -44,11 +44,13 @@ const LetterButton: React.FC<LetterButtonProps> = ({
 
 export default LetterButton
 
-const LetterButtonStyled = styled.button<{
+interface LetterButtonStyledProps {
   isSwedish: boolean
   isAGoodGuess: boolean
   hasBeenGuessed: boolean
-}>`
+}
+
+const LetterButtonStyled = styled.button<LetterButtonStyledProps>`
   background: #363636;
   margin: ${({ isSwedish }) => (isSwedish ? "10px 16px" : "10px")};
   width: 68px;
