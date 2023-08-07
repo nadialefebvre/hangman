@@ -1,26 +1,27 @@
 import frData from "./frWordsList.json"
 import svData from "./svWordsList.json"
 
-interface WordData {
+interface WordsListData {
   [key: string]: string[]
 }
 
 export const fetchValidRandomWord = async (
   type: string
 ): Promise<string | void> => {
+  const setRandomWord = (data: WordsListData) => {
+    const wordsListToUse = data[type]
+    return wordsListToUse[Math.floor(Math.random() * wordsListToUse.length)]
+  }
+
   try {
-    if (navigator.language.split("-")[0] === "fr") {
-      const wordsListToUse = (frData as WordData)[type]
-      const randomWord =
-        wordsListToUse[Math.floor(Math.random() * wordsListToUse.length)]
+    const userLanguage = navigator.language.split("-")[0]
 
-      return randomWord.normalize("NFD").replace(/\p{Diacritic}/gu, "")
-    } else if (navigator.language.split("-")[0] === "sv") {
-      const wordsListToUse = (svData as WordData)[type]
-      const randomWord =
-        wordsListToUse[Math.floor(Math.random() * wordsListToUse.length)]
-
-      return randomWord
+    if (userLanguage === "fr") {
+      return setRandomWord(frData)
+        .normalize("NFD")
+        .replace(/\p{Diacritic}/gu, "")
+    } else if (userLanguage === "sv") {
+      return setRandomWord(svData)
     }
     const res = await fetch(
       `https://api.api-ninjas.com/v1/randomword?type=${type}`,
