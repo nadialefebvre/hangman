@@ -5,8 +5,13 @@ import styled from "styled-components/macro"
 import { GameContext } from "../../../game/context"
 
 import { GuessState, LetterItem } from "../../../game/types"
+import { useIntl } from "react-intl"
+
+import messages from "../../../messages"
 
 const Counter: React.FC = () => {
+  const { formatMessage } = useIntl()
+
   const { state } = useContext(GameContext)
 
   const letters: LetterItem[] = state.letters
@@ -18,8 +23,10 @@ const Counter: React.FC = () => {
 
   return (
     <TextCounter>
-      {remainingGuessesCount}{" "}
-      {remainingGuessesCount === 1 ? "chance" : "chances"} left
+      {remainingGuessesCount}
+      {remainingGuessesCount < 2
+        ? formatMessage(messages.counterSingular)
+        : formatMessage(messages.counterPlural)}
     </TextCounter>
   )
 }

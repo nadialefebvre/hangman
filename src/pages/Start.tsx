@@ -10,7 +10,7 @@ import { fetchValidRandomWord } from "../utils/fetchValidRandomWord"
 import messages from "../messages"
 
 const Start: React.FC = () => {
-  const types: string[] = ["noun", "verb", "adjective", "adverb", "any type"]
+  const types: string[] = ["noun", "verb", "adjective", "adverb", "random"]
 
   const { formatMessage } = useIntl()
   const { dispatch } = useContext(GameContext)
@@ -27,8 +27,6 @@ const Start: React.FC = () => {
   return (
     <>
       <Preamble>{formatMessage(messages.instructions)}</Preamble>
-
-      {/* <Preamble>Choose a type or go for any type</Preamble> */}
       <ButtonsDiv>
         {types.map((type: string) => (
           <Button key={type} onClick={() => handleFetchRandomWord(type)}>

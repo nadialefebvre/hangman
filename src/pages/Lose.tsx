@@ -6,14 +6,20 @@ import RestartButton from "../components/common/RestartButton"
 
 import { GameContext } from "../game/context"
 
+import { useIntl } from "react-intl"
+
+import messages from "../messages"
+
 const Lose: React.FC = () => {
+  const { formatMessage } = useIntl()
+
   const { state } = useContext(GameContext)
 
   return (
     <>
-      <StyledText>You LOST!</StyledText>
+      <StyledText>{formatMessage(messages.loseMessage)}</StyledText>
       <StyledText>
-        The word was{" "}
+        {formatMessage(messages.wordMessage)}
         <StyledTextRedBig>{state.randomWord.toUpperCase()}</StyledTextRedBig>
       </StyledText>
 
