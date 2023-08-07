@@ -1,3 +1,13 @@
 {
-  "app.start.instructions": "Choisissez un type ou optez pour n'importe quel type"
+  "app.global.restartButton": "Recommencer",
+  "app.global.wordMessage": "Le mot était ",
+
+  "app.start.instructions": "Choisissez une catégorie ou obtenez un mot au hasard",
+
+  "app.play.counterPlural": " essais restants",
+  "app.play.counterSingular": " essai restant",
+
+  "app.win.winMessage": "Vous avez gagné !",
+
+  "app.lose.loseMessage": "Vous avez perdu !"
 }

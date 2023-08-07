@@ -1,3 +1,13 @@
 {
-  "app.start.instructions": "Choose a type or go for any type"
+  "app.global.restartButton": "Restart",
+  "app.global.wordMessage": "The word was ",
+
+  "app.start.instructions": "Choose a category or get a random word",
+
+  "app.play.counterPlural": " attempts left",
+  "app.play.counterSingular": " attempt left",
+
+  "app.win.winMessage": "You won!",
+
+  "app.lose.loseMessage": "You lost!"
 }

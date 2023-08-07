@@ -1,0 +1,13 @@
+{
+  "app.global.restartButton": "Starta om",
+  "app.global.wordMessage": "Ordet var ",
+
+  "app.start.instructions": "Välj en kategori eller få ett slumpmässigt ord",
+
+  "app.play.counterPlural": " försök kvar",
+  "app.play.counterSingular": " försök kvar",
+
+  "app.win.winMessage": "Du vann!",
+
+  "app.lose.loseMessage": "Du förlorade!"
+}
