@@ -7,9 +7,9 @@ import { GameContext } from "../game/context"
 import messages from "../messages"
 
 const Win: React.FC = () => {
-  const { formatMessage } = useIntl()
-
   const { state } = useContext(GameContext)
+
+  const { formatMessage } = useIntl()
 
   return (
     <>

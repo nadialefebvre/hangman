@@ -6,9 +6,9 @@ import messages from "../../messages"
 import Button from "./Button"
 
 const RestartButton: React.FC = () => {
-  const { formatMessage } = useIntl()
-
   const { dispatch } = useContext(GameContext)
+
+  const { formatMessage } = useIntl()
 
   const handleRestart = (): void => {
     dispatch({ type: "RESET_GAME" })

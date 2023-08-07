@@ -10,6 +10,7 @@ export const fetchValidRandomWord = async (
 ): Promise<string | void> => {
   const setRandomWord = (data: WordsListData) => {
     const wordsListToUse = data[type]
+
     return wordsListToUse[Math.floor(Math.random() * wordsListToUse.length)]
   }
 
@@ -23,6 +24,7 @@ export const fetchValidRandomWord = async (
     } else if (userLanguage === "sv") {
       return setRandomWord(svData)
     }
+
     const res = await fetch(
       `https://api.api-ninjas.com/v1/randomword?type=${type}`,
       {
@@ -30,6 +32,7 @@ export const fetchValidRandomWord = async (
         headers: { "X-Api-Key": `${process.env.REACT_APP_API_NINJAS_KEY}` },
       }
     )
+
     const json = await res.json()
 
     const isLowercase = (word: string): boolean => {

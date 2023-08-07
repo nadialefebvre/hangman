@@ -16,9 +16,9 @@ const LetterButton: React.FC<LetterButtonProps> = ({
   hasBeenGuessed,
   isAGoodGuess,
 }) => {
-  const { guessOneLetter } = useGuessOneLetter()
-
   const { state } = useContext(GameContext)
+
+  const { guessOneLetter } = useGuessOneLetter()
 
   const letters: LetterItem[] = state.letters
 

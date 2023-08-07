@@ -8,10 +8,11 @@ import messages from "../messages"
 import { fetchValidRandomWord } from "../utils/fetchValidRandomWord"
 
 const Start: React.FC = () => {
-  const types: string[] = ["noun", "verb", "adjective", "adverb", "random"]
+  const { dispatch } = useContext(GameContext)
 
   const { formatMessage } = useIntl()
-  const { dispatch } = useContext(GameContext)
+
+  const types: string[] = ["noun", "verb", "adjective", "adverb", "random"]
 
   const handleFetchRandomWord = async (type: string): Promise<void> => {
     const word: string | void = await fetchValidRandomWord(type)

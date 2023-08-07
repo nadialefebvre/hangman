@@ -9,6 +9,7 @@ const Word: React.FC = () => {
   const { state } = useContext(GameContext)
 
   const wordLetters: string[] = Array.from(state.randomWord)
+
   const letters: LetterItem[] = state.letters
 
   const isAGoodGuess = (letter: string): boolean => {

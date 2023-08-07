@@ -5,9 +5,10 @@ import { GuessState, LetterItem } from "../../../game/types"
 import useGuessOneLetter from "./useGuessOneLetter"
 
 const useHandleKeyDown = () => {
+  const { state, dispatch } = useContext(GameContext)
+
   const { guessOneLetter } = useGuessOneLetter()
 
-  const { state, dispatch } = useContext(GameContext)
   const letters: LetterItem[] = state.letters
 
   const isLetter = (key: string): boolean => /^[a-zåöä]$/.test(key)
@@ -16,6 +17,7 @@ const useHandleKeyDown = () => {
 
   const handleKeyDown = (event: KeyboardEvent) => {
     const key: string = event.key.toLowerCase()
+
     const letterIndex: number = letters.findIndex(
       (item: LetterItem) => item.letter === key
     )
