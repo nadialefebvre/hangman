@@ -17,10 +17,13 @@ import { GuessState, LetterItem } from "./game/types"
 import "./index.css"
 
 export const userLanguage = navigator.language.split("-")[0]
+console.log(userLanguage)
 
 let localeData = require("./en.json")
 if (userLanguage === "fr") {
   localeData = require("./fr.json")
+} else if (userLanguage === "sv") {
+  localeData = require("./sv.json")
 }
 
 const App: React.FC = () => {
