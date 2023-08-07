@@ -1,10 +1,8 @@
 import React, { useContext } from "react"
-
 import styled from "styled-components/macro"
 
 import { GameContext } from "../../../game/context"
 import { GuessState, LetterItem } from "../../../game/types"
-
 import LetterButton from "../components/LetterButton"
 
 const LetterButtonsContainer: React.FC = () => {

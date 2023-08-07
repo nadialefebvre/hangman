@@ -1,5 +1,5 @@
-import frData from "./frWords.json"
-import svData from "./svWords.json"
+import frData from "./frWordsList.json"
+import svData from "./svWordsList.json"
 
 interface WordData {
   [key: string]: string[]

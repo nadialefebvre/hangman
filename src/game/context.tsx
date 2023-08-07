@@ -1,6 +1,7 @@
 import React, { Dispatch, createContext, useReducer } from "react"
-import { GameState, GameAction } from "./types"
-import { initialState, gameReducer } from "./reducer"
+
+import { gameReducer, initialState } from "./reducer"
+import { GameAction, GameState } from "./types"
 
 type GameContextValue = {
   state: GameState

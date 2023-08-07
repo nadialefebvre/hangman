@@ -1,13 +1,11 @@
 import React, { useContext } from "react"
 import { useIntl } from "react-intl"
-
 import styled from "styled-components/macro"
 
 import Button from "../components/common/Button"
 import { GameContext } from "../game/context"
-
-import { fetchValidRandomWord } from "../utils/fetchValidRandomWord"
 import messages from "../messages"
+import { fetchValidRandomWord } from "../utils/fetchValidRandomWord"
 
 const Start: React.FC = () => {
   const types: string[] = ["noun", "verb", "adjective", "adverb", "random"]

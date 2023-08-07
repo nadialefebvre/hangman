@@ -1,20 +1,17 @@
 import React, { useContext } from "react"
 import { IntlProvider } from "react-intl"
-
 import styled from "styled-components/macro"
 
-import Start from "./pages/Start"
-import Play from "./pages/Play/Play"
-import Lose from "./pages/Lose"
-import Win from "./pages/Win"
-
-import { GameContext } from "./game/context"
-import Header from "./components/Header"
-import Footer from "./components/Footer"
-
-import { GuessState, LetterItem } from "./game/types"
-
 import "./index.css"
+
+import Footer from "./components/Footer"
+import Header from "./components/Header"
+import { GameContext } from "./game/context"
+import { GuessState, LetterItem } from "./game/types"
+import Lose from "./pages/Lose"
+import Play from "./pages/Play/Play"
+import Start from "./pages/Start"
+import Win from "./pages/Win"
 
 export const userLanguage = navigator.language.split("-")[0]
 console.log(userLanguage)

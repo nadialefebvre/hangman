@@ -1,8 +1,6 @@
 import React, { useContext } from "react"
-
-import { v4 as uuidv4 } from "uuid"
-
 import styled from "styled-components/macro"
+import { v4 as uuidv4 } from "uuid"
 
 import { GameContext } from "../../../game/context"
 import { GuessState, LetterItem } from "../../../game/types"

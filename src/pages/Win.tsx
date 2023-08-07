@@ -1,13 +1,9 @@
 import React, { useContext } from "react"
-
+import { useIntl } from "react-intl"
 import styled from "styled-components/macro"
 
 import RestartButton from "../components/common/RestartButton"
-
 import { GameContext } from "../game/context"
-
-import { useIntl } from "react-intl"
-
 import messages from "../messages"
 
 const Win: React.FC = () => {

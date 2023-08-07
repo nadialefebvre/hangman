@@ -1,14 +1,11 @@
-import React, { useEffect, useContext } from "react"
+import React, { useContext, useEffect } from "react"
 
 import RestartButton from "../../components/common/RestartButton"
 import { GameContext } from "../../game/context"
-
 import { GuessState, LetterItem } from "../../game/types"
 import Counter from "./components/Counter"
-
 import LetterButtonsContainer from "./components/LetterButtonsContainer"
 import Word from "./components/Word"
-
 import useHandleKeyDown from "./hooks/usehandleKeyDown"
 
 const Play: React.FC = () => {

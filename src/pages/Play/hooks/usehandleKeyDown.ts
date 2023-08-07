@@ -1,7 +1,7 @@
 import { useContext } from "react"
+
 import { GameContext } from "../../../game/context"
 import { GuessState, LetterItem } from "../../../game/types"
-
 import useGuessOneLetter from "./useGuessOneLetter"
 
 const useHandleKeyDown = () => {

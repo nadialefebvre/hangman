@@ -1,11 +1,9 @@
 import React, { useContext } from "react"
-
-import { GameContext } from "../../game/context"
-import Button from "./Button"
-
 import { useIntl } from "react-intl"
 
+import { GameContext } from "../../game/context"
 import messages from "../../messages"
+import Button from "./Button"
 
 const RestartButton: React.FC = () => {
   const { formatMessage } = useIntl()

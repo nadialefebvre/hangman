@@ -1,7 +1,7 @@
 import { useContext } from "react"
 
-import { GuessState } from "../../../game/types"
 import { GameContext } from "../../../game/context"
+import { GuessState } from "../../../game/types"
 
 const useGuessOneLetter = () => {
   const { state, dispatch } = useContext(GameContext)

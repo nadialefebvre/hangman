@@ -1,5 +1,5 @@
 import { Reducer } from "react"
-import { GameState, GuessState, GameAction } from "./types"
+import { GameAction, GameState, GuessState } from "./types"
 
 const arrayLength = navigator.language.split("-")[0] === "sv" ? 29 : 26
 
@@ -45,4 +45,4 @@ const gameReducer: Reducer<GameState, GameAction> = (
   }
 }
 
-export { initialState, gameReducer }
+export { gameReducer, initialState }

@@ -1,12 +1,9 @@
 import React, { useContext } from "react"
-
 import styled from "styled-components/macro"
 
-import { GameContext } from "../../../game/context"
-
-import { GuessState, LetterItem } from "../../../game/types"
 import { useIntl } from "react-intl"
-
+import { GameContext } from "../../../game/context"
+import { GuessState, LetterItem } from "../../../game/types"
 import messages from "../../../messages"
 
 const Counter: React.FC = () => {

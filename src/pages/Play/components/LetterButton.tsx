@@ -1,10 +1,8 @@
 import React, { useContext } from "react"
-
 import styled from "styled-components/macro"
 
-import { GuessState, LetterItem } from "../../../game/types"
 import { GameContext } from "../../../game/context"
-
+import { GuessState, LetterItem } from "../../../game/types"
 import useGuessOneLetter from "../hooks/useGuessOneLetter"
 
 interface LetterButtonProps {
