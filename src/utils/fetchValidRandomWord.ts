@@ -1,4 +1,5 @@
-import data from "./words.json"
+import frData from "./frWords.json"
+import svData from "./svWords.json"
 
 interface WordData {
   [key: string]: string[]
@@ -9,7 +10,13 @@ export const fetchValidRandomWord = async (
 ): Promise<string | void> => {
   try {
     if (navigator.language.split("-")[0] === "fr") {
-      const wordsListToUse = (data as WordData)[type]
+      const wordsListToUse = (frData as WordData)[type]
+      const randomWord =
+        wordsListToUse[Math.floor(Math.random() * wordsListToUse.length)]
+
+      return randomWord.normalize("NFD").replace(/\p{Diacritic}/gu, "")
+    } else if (navigator.language.split("-")[0] === "sv") {
+      const wordsListToUse = (svData as WordData)[type]
       const randomWord =
         wordsListToUse[Math.floor(Math.random() * wordsListToUse.length)]
 
