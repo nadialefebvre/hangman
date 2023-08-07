@@ -20,7 +20,7 @@ export const fetchValidRandomWord = async (
       const randomWord =
         wordsListToUse[Math.floor(Math.random() * wordsListToUse.length)]
 
-      return randomWord.normalize("NFD").replace(/\p{Diacritic}/gu, "")
+      return randomWord
     }
     const res = await fetch(
       `https://api.api-ninjas.com/v1/randomword?type=${type}`,
