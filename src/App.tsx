@@ -13,7 +13,7 @@ import Play from "./pages/Play/Play"
 import Start from "./pages/Start"
 import Win from "./pages/Win"
 
-export const userLanguage = navigator.language.split("-")[0]
+const userLanguage = navigator.language.split("-")[0]
 console.log(userLanguage)
 
 let localeData = require("./en.json")
