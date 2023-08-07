@@ -10,7 +10,7 @@ const useHandleKeyDown = () => {
   const { state, dispatch } = useContext(GameContext)
   const letters: LetterItem[] = state.letters
 
-  const isLetter = (key: string): boolean => /^[a-z]$/.test(key)
+  const isLetter = (key: string): boolean => /^[a-zåöä]$/.test(key)
   const isRestartKeyPressed = (key: string): boolean =>
     key === "enter" || key === "escape"
 
@@ -34,7 +34,7 @@ const useHandleKeyDown = () => {
       }
     } else if (isRestartKeyPressed(key)) {
       dispatch({ type: "RESET_GAME" })
-    } else if (event.key.length === 1) {
+    } else if (key.length === 1) {
       alert("Only letters are allowed. Press ENTER or ESC to escape the game")
     }
   }
