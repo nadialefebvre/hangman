@@ -1,7 +1,7 @@
 import { Reducer } from "react"
 import { GameState, GuessState, GameAction } from "./types"
 
-const arrayLength = navigator.language.split("-")[0] === "fr" ? 29 : 26
+const arrayLength = navigator.language.split("-")[0] === "sv" ? 29 : 26
 
 const initialState: GameState = {
   gamePhase: "Start",
