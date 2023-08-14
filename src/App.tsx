@@ -14,13 +14,15 @@ import Start from "./pages/Start"
 import Win from "./pages/Win"
 
 const userLanguage = navigator.language.split("-")[0]
+
 console.log(userLanguage)
 
-let localeData = require("./en.json")
-if (userLanguage === "fr") {
-  localeData = require("./fr.json")
-} else if (userLanguage === "sv") {
-  localeData = require("./sv.json")
+const supportedLanguages: string[] = ["en", "fr", "sv"]
+const fallbackLanguage: string = "en"
+
+let localeData = require(`./${fallbackLanguage}.json`)
+if (supportedLanguages.includes(userLanguage)) {
+  localeData = require(`./${userLanguage}.json`)
 }
 
 const App: React.FC = () => {
