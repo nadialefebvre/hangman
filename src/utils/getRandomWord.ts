@@ -5,8 +5,9 @@ interface WordsListData {
   [key: string]: string[]
 }
 
-export const fetchValidRandomWord = async (
-  type: string
+export const getRandomWord = async (
+  type: string,
+  language: string
 ): Promise<string | void> => {
   const setRandomWord = (data: WordsListData) => {
     const wordsListToUse = data[type]
@@ -15,13 +16,11 @@ export const fetchValidRandomWord = async (
   }
 
   try {
-    const userLanguage = navigator.language.split("-")[0]
-
-    if (userLanguage === "fr") {
+    if (language === "fr") {
       return setRandomWord(frData)
         .normalize("NFD")
         .replace(/\p{Diacritic}/gu, "")
-    } else if (userLanguage === "sv") {
+    } else if (language === "sv") {
       return setRandomWord(svData)
     }
 
@@ -34,16 +33,7 @@ export const fetchValidRandomWord = async (
     )
 
     const json = await res.json()
-
-    const isLowercase = (word: string): boolean => {
-      return word === word.toLowerCase()
-    }
-
-    if (isLowercase(json.word)) {
-      return json.word
-    } else {
-      return fetchValidRandomWord(type)
-    }
+    return json.word
   } catch (error) {
     console.error(error)
   }

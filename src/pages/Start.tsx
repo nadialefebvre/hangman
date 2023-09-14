@@ -5,17 +5,24 @@ import styled from "styled-components/macro"
 import Button from "../components/common/Button"
 import { GameContext } from "../game/context"
 import messages from "../messages"
-import { fetchValidRandomWord } from "../utils/fetchValidRandomWord"
+import { getRandomWord } from "../utils/getRandomWord"
 
 const Start: React.FC = () => {
-  const { dispatch } = useContext(GameContext)
+  const { state, dispatch } = useContext(GameContext)
 
   const { formatMessage } = useIntl()
 
   const types: string[] = ["noun", "verb", "adjective", "adverb", "random"]
 
-  const handleFetchRandomWord = async (type: string): Promise<void> => {
-    const word: string | void = await fetchValidRandomWord(type)
+  const handleGetRandomWord = async (type: string): Promise<void> => {
+    const isValidWord = (word: string): boolean => {
+      return word === word.toLowerCase()
+    }
+
+    let word: string | void = await getRandomWord(type, state.language)
+    while (word && !isValidWord(word)) {
+      word = await getRandomWord(type, state.language)
+    }
 
     if (word) {
       dispatch({ type: "UPDATE_GAME_STATE", payload: "Play" })
@@ -28,7 +35,7 @@ const Start: React.FC = () => {
       <Preamble>{formatMessage(messages.instructions)}</Preamble>
       <ButtonsDiv>
         {types.map((type: string) => (
-          <Button key={type} onClick={() => handleFetchRandomWord(type)}>
+          <Button key={type} onClick={() => handleGetRandomWord(type)}>
             {type}
           </Button>
         ))}
