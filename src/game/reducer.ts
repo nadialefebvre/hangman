@@ -4,6 +4,7 @@ import { GameAction, GameState, GuessState } from "./types"
 const arrayLength = navigator.language.split("-")[0] === "sv" ? 29 : 26
 
 const initialState: GameState = {
+  language: navigator.language.split("-")[0],
   gamePhase: "Start",
   randomWord: "",
   letters: [...Array(arrayLength)].map((_, i) => ({

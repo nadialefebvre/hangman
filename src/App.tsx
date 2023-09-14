@@ -13,21 +13,17 @@ import Play from "./pages/Play/Play"
 import Start from "./pages/Start"
 import Win from "./pages/Win"
 
-const userLanguage = navigator.language.split("-")[0]
-
-console.log(userLanguage)
-
 const supportedLanguages: string[] = ["en", "fr", "sv"]
-const fallbackLanguage: string = "en"
-
-let localeData = require(`./translations/${fallbackLanguage}.json`)
-if (supportedLanguages.includes(userLanguage)) {
-  localeData = require(`./translations/${userLanguage}.json`)
-}
+const defaultLanguage: string = "en"
 
 const App: React.FC = () => {
   const { state } = useContext(GameContext)
   console.log(state.randomWord)
+
+  let localeData = require(`./translations/${defaultLanguage}.json`)
+  if (supportedLanguages.includes(state.language)) {
+    localeData = require(`./translations/${state.language}.json`)
+  }
 
   const letters: LetterItem[] = state.letters
 
@@ -38,7 +34,7 @@ const App: React.FC = () => {
   const steps: number[] = [1, 2, 3, 4, 5, 6, 7, 8]
 
   return (
-    <IntlProvider locale={userLanguage} messages={localeData}>
+    <IntlProvider locale={state.language} messages={localeData}>
       <OuterWrapper
         className={state.gamePhase === "Lose" ? "has-background" : ""}
       >

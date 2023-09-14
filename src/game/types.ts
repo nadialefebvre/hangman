@@ -10,6 +10,7 @@ interface LetterItem {
 }
 
 type GameState = {
+  language: string
   gamePhase: "Start" | "Play" | "Win" | "Lose"
   randomWord: string
   letters: LetterItem[]
