@@ -20,9 +20,9 @@ console.log(userLanguage)
 const supportedLanguages: string[] = ["en", "fr", "sv"]
 const fallbackLanguage: string = "en"
 
-let localeData = require(`./${fallbackLanguage}.json`)
+let localeData = require(`./translations/${fallbackLanguage}.json`)
 if (supportedLanguages.includes(userLanguage)) {
-  localeData = require(`./${userLanguage}.json`)
+  localeData = require(`./translations/${userLanguage}.json`)
 }
 
 const App: React.FC = () => {
