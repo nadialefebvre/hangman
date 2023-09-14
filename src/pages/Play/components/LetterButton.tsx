@@ -1,6 +1,7 @@
-import React from "react"
+import React, { useContext } from "react"
 import styled from "styled-components/macro"
 
+import { GameContext } from "../../../game/context"
 import useGuessOneLetter from "../hooks/useGuessOneLetter"
 
 interface LetterButtonProps {
@@ -18,9 +19,11 @@ const LetterButton: React.FC<LetterButtonProps> = ({
 }) => {
   const { guessOneLetter } = useGuessOneLetter()
 
+  const { state } = useContext(GameContext)
+
   return (
     <LetterButtonStyled
-      isSwedish={navigator.language.split("-")[0] === "sv"}
+      isSwedish={state.language === "sv"}
       key={letter}
       disabled={hasBeenGuessed || isEndOfGame}
       onClick={() => guessOneLetter(letter)}
