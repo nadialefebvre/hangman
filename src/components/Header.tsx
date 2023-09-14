@@ -1,6 +1,5 @@
 import React, { useContext } from "react"
 import styled from "styled-components/macro"
-import { v4 as uuidv4 } from "uuid"
 
 import { GameContext } from "../game/context"
 
@@ -16,11 +15,11 @@ const Header: React.FC<Props> = ({ badGuessesCount }) => {
   return (
     <header>
       <Title>
-        {title.map((item, index) => (
+        {title.map((item, i) => (
           <span
-            key={uuidv4()}
+            key={`${i}${item}`}
             className={
-              index + 1 <= badGuessesCount && state.gamePhase === "Play"
+              i + 1 <= badGuessesCount && state.gamePhase === "Play"
                 ? "has-color"
                 : ""
             }
