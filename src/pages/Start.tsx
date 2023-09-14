@@ -12,16 +12,16 @@ const Start: React.FC = () => {
 
   const { formatMessage } = useIntl()
 
-  const types: string[] = ["noun", "verb", "adjective", "adverb", "random"]
+  const categories: string[] = ["noun", "verb", "adjective", "adverb", "random"]
 
-  const handleGetRandomWord = async (type: string): Promise<void> => {
+  const handleGetRandomWord = async (category: string): Promise<void> => {
     const isValidWord = (word: string): boolean => {
       return word === word.toLowerCase()
     }
 
-    let word: string | void = await getRandomWord(type, state.language)
+    let word: string | void = await getRandomWord(category, state.language)
     while (word && !isValidWord(word)) {
-      word = await getRandomWord(type, state.language)
+      word = await getRandomWord(category, state.language)
     }
 
     if (word) {
@@ -34,9 +34,9 @@ const Start: React.FC = () => {
     <>
       <Preamble>{formatMessage(messages.instructions)}</Preamble>
       <ButtonsDiv>
-        {types.map((type: string) => (
-          <Button key={type} onClick={() => handleGetRandomWord(type)}>
-            {type}
+        {categories.map((category: string) => (
+          <Button key={category} onClick={() => handleGetRandomWord(category)}>
+            {category}
           </Button>
         ))}
       </ButtonsDiv>

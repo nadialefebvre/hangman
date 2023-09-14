@@ -6,11 +6,11 @@ interface WordsListData {
 }
 
 export const getRandomWord = async (
-  type: string,
+  category: string,
   language: string
 ): Promise<string | void> => {
   const setRandomWord = (data: WordsListData) => {
-    const wordsListToUse = data[type]
+    const wordsListToUse = data[category]
 
     return wordsListToUse[Math.floor(Math.random() * wordsListToUse.length)]
   }
@@ -25,7 +25,7 @@ export const getRandomWord = async (
     }
 
     const res = await fetch(
-      `https://api.api-ninjas.com/v1/randomword?type=${type}`,
+      `https://api.api-ninjas.com/v1/randomword?type=${category}`,
       {
         method: "GET",
         headers: { "X-Api-Key": `${process.env.REACT_APP_API_NINJAS_KEY}` },
