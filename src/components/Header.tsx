@@ -1,19 +1,30 @@
-import React from "react"
+import React, { useContext } from "react"
 import styled from "styled-components/macro"
 import { v4 as uuidv4 } from "uuid"
 
+import { GameContext } from "../game/context"
+
 interface Props {
-  test: number
+  badGuessesCount: number
 }
 
-const Header: React.FC<Props> = ({ test }) => {
+const Header: React.FC<Props> = ({ badGuessesCount }) => {
+  const { state } = useContext(GameContext)
+
   const title = Array.from("hangman!")
 
   return (
     <header>
       <Title>
         {title.map((item, index) => (
-          <span key={uuidv4()} className={index + 1 <= test ? "has-color" : ""}>
+          <span
+            key={uuidv4()}
+            className={
+              index + 1 <= badGuessesCount && state.gamePhase === "Play"
+                ? "has-color"
+                : ""
+            }
+          >
             {item}
           </span>
         ))}

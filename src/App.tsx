@@ -52,7 +52,7 @@ const App: React.FC = () => {
             />
           ))}
         <InnerWrapper>
-          <Header test={badGuesses.length} />
+          <Header badGuessesCount={badGuesses.length} />
           {state.gamePhase === "Start" && <Start />}
           {state.gamePhase === "Play" && <Play />}
           {state.gamePhase === "Win" && <Win />}
