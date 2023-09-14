@@ -28,7 +28,7 @@ const LetterButton: React.FC<LetterButtonProps> = ({
 
   return (
     <LetterButtonStyled
-      isSwedish={navigator.language.split("-")[0] === "fr"}
+      isSwedish={navigator.language.split("-")[0] === "sv"}
       key={letter}
       disabled={hasBeenGuessed || badGuesses.length === 8}
       onClick={() => guessOneLetter(letter)}
@@ -50,7 +50,7 @@ interface LetterButtonStyledProps {
 
 const LetterButtonStyled = styled.button<LetterButtonStyledProps>`
   background: #363636;
-  margin: ${({ isSwedish }) => (isSwedish ? "10px 16px" : "10px")};
+  margin: ${({ isSwedish }) => (isSwedish ? "10px 4px" : "10px")};
   width: 68px;
   height: 68px;
   border: none;

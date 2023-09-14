@@ -36,13 +36,6 @@ const Play: React.FC = () => {
     }, 3000)
   }
 
-  // const isGameWon = (): boolean => {
-  //   return word.split("").every((letter) => {
-  //     const letterIndex: number = letter.charCodeAt(0) - 97
-  //     return letters[letterIndex].guessState === GuessState.Correct
-  //   })
-  // }
-
   const isGameWon = (): boolean => {
     return word.split("").every((wordLetter) => {
       return letters.find(
