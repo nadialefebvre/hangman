@@ -1,39 +1,32 @@
-import React, { useContext } from "react"
+import React from "react"
 import styled from "styled-components/macro"
 
-import { GameContext } from "../../../game/context"
-import { GuessState, LetterItem } from "../../../game/types"
 import useGuessOneLetter from "../hooks/useGuessOneLetter"
 
 interface LetterButtonProps {
   letter: string
   hasBeenGuessed: boolean
   isAGoodGuess: boolean
+  isEndOfGame: boolean
 }
 
 const LetterButton: React.FC<LetterButtonProps> = ({
   letter,
   hasBeenGuessed,
   isAGoodGuess,
+  isEndOfGame,
 }) => {
-  const { state } = useContext(GameContext)
-
   const { guessOneLetter } = useGuessOneLetter()
-
-  const letters: LetterItem[] = state.letters
-
-  const badGuesses: LetterItem[] = letters.filter(
-    (item: LetterItem) => item.guessState === GuessState.Wrong
-  )
 
   return (
     <LetterButtonStyled
       isSwedish={navigator.language.split("-")[0] === "sv"}
       key={letter}
-      disabled={hasBeenGuessed || badGuesses.length === 8}
+      disabled={hasBeenGuessed || isEndOfGame}
       onClick={() => guessOneLetter(letter)}
       isAGoodGuess={isAGoodGuess}
       hasBeenGuessed={hasBeenGuessed}
+      isEndOfGame={isEndOfGame}
     >
       <span>{letter}</span>
     </LetterButtonStyled>
@@ -46,6 +39,7 @@ interface LetterButtonStyledProps {
   isSwedish: boolean
   isAGoodGuess: boolean
   hasBeenGuessed: boolean
+  isEndOfGame: boolean
 }
 
 const LetterButtonStyled = styled.button<LetterButtonStyledProps>`
@@ -54,7 +48,6 @@ const LetterButtonStyled = styled.button<LetterButtonStyledProps>`
   width: 68px;
   height: 68px;
   border: none;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -63,8 +56,8 @@ const LetterButtonStyled = styled.button<LetterButtonStyledProps>`
     background: ${({ isAGoodGuess }) =>
       isAGoodGuess ? "rgba(0, 128, 0, 0.1)" : "rgba(255, 0, 0, 0.1)"};
 
-    background: ${({ hasBeenGuessed }) =>
-      !hasBeenGuessed && "rgba(54, 54, 54, 0.1)"};
+    background: ${({ hasBeenGuessed, isEndOfGame }) =>
+      !hasBeenGuessed && isEndOfGame && "rgba(54, 54, 54, 0.1)"};
   }
 
   span {

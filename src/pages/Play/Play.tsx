@@ -22,19 +22,7 @@ const Play: React.FC = () => {
   )
   const remainingGuessesCount: number = 8 - badGuesses.length
 
-  useEffect(() => {
-    window.addEventListener("keydown", handleKeyDown)
-    return () => window.removeEventListener("keydown", handleKeyDown)
-  })
-
   const isGameLost: boolean = remainingGuessesCount === 0
-
-  if (isGameLost) {
-    // need to block all buttons and prevent to press any key
-    setTimeout(() => {
-      dispatch({ type: "UPDATE_GAME_STATE", payload: "Lose" })
-    }, 3000)
-  }
 
   const isGameWon = (): boolean => {
     return word.split("").every((wordLetter) => {
@@ -46,17 +34,29 @@ const Play: React.FC = () => {
     })
   }
 
+  if (isGameLost) {
+    setTimeout(() => {
+      dispatch({ type: "UPDATE_GAME_STATE", payload: "Lose" })
+    }, 3000)
+  }
+
   if (isGameWon()) {
-    // need to block all buttons and prevent to press any key
     setTimeout(() => {
       dispatch({ type: "UPDATE_GAME_STATE", payload: "Win" })
     }, 3000)
   }
 
+  useEffect(() => {
+    if (!isGameLost && !isGameWon()) {
+      window.addEventListener("keydown", handleKeyDown)
+    }
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  })
+
   return (
     <>
       <Counter />
-      <LetterButtonsContainer />
+      <LetterButtonsContainer isEndOfGame={isGameLost || isGameWon()} />
       <Word />
       <RestartButton />
     </>

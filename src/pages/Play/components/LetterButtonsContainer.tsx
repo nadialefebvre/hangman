@@ -5,7 +5,13 @@ import { GameContext } from "../../../game/context"
 import { GuessState, LetterItem } from "../../../game/types"
 import LetterButton from "../components/LetterButton"
 
-const LetterButtonsContainer: React.FC = () => {
+interface LetterButtonsContainerProps {
+  isEndOfGame: boolean
+}
+
+const LetterButtonsContainer: React.FC<LetterButtonsContainerProps> = ({
+  isEndOfGame,
+}) => {
   const { state } = useContext(GameContext)
 
   const letters: LetterItem[] = state.letters
@@ -32,6 +38,7 @@ const LetterButtonsContainer: React.FC = () => {
           letter={item.letter}
           hasBeenGuessed={hasBeenGuessed(item.letter)}
           isAGoodGuess={isAGoodGuess(item.letter)}
+          isEndOfGame={isEndOfGame}
         />
       ))}
     </LettersContainer>
