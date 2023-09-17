@@ -3,19 +3,18 @@ import styled from "styled-components/macro"
 
 import { GameContext } from "../../../game/context"
 import useGuessOneLetter from "../hooks/useGuessOneLetter"
+import { GuessState } from "../../../game/types"
 
 interface LetterButtonProps {
   letter: string
-  hasBeenGuessed: boolean
-  isAGoodGuess: boolean
   isEndOfGame: boolean
+  guessState: GuessState | undefined
 }
 
 const LetterButton: React.FC<LetterButtonProps> = ({
   letter,
-  hasBeenGuessed,
-  isAGoodGuess,
   isEndOfGame,
+  guessState,
 }) => {
   const { guessOneLetter } = useGuessOneLetter()
 
@@ -23,13 +22,11 @@ const LetterButton: React.FC<LetterButtonProps> = ({
 
   return (
     <LetterButtonStyled
-      isSwedish={state.language === "sv"}
-      key={letter}
-      disabled={hasBeenGuessed || isEndOfGame}
+      isSwedishKeyboard={state.language === "sv"}
+      disabled={guessState !== "UNTOUCHED" || isEndOfGame}
       onClick={() => guessOneLetter(letter)}
-      isAGoodGuess={isAGoodGuess}
-      hasBeenGuessed={hasBeenGuessed}
       isEndOfGame={isEndOfGame}
+      guessState={guessState}
     >
       <span>{letter}</span>
     </LetterButtonStyled>
@@ -39,15 +36,15 @@ const LetterButton: React.FC<LetterButtonProps> = ({
 export default LetterButton
 
 interface LetterButtonStyledProps {
-  isSwedish: boolean
-  isAGoodGuess: boolean
-  hasBeenGuessed: boolean
+  isSwedishKeyboard: boolean
   isEndOfGame: boolean
+  guessState: GuessState | undefined
 }
 
 const LetterButtonStyled = styled.button<LetterButtonStyledProps>`
   background: #363636;
-  margin: ${({ isSwedish }) => (isSwedish ? "10px 4px" : "10px")};
+  margin: ${({ isSwedishKeyboard }) =>
+    isSwedishKeyboard ? "10px 4px" : "10px"};
   width: 68px;
   height: 68px;
   border: none;
@@ -56,11 +53,13 @@ const LetterButtonStyled = styled.button<LetterButtonStyledProps>`
   align-items: center;
 
   :disabled {
-    background: ${({ isAGoodGuess }) =>
-      isAGoodGuess ? "rgba(0, 128, 0, 0.1)" : "rgba(255, 0, 0, 0.1)"};
+    background: ${({ guessState }) =>
+      guessState === "CORRECT"
+        ? "rgba(0, 128, 0, 0.1)"
+        : "rgba(255, 0, 0, 0.1)"};
 
-    background: ${({ hasBeenGuessed, isEndOfGame }) =>
-      !hasBeenGuessed && isEndOfGame && "rgba(54, 54, 54, 0.1)"};
+    background: ${({ guessState, isEndOfGame }) =>
+      guessState === "UNTOUCHED" && isEndOfGame && "rgba(54, 54, 54, 0.1)"};
   }
 
   span {
