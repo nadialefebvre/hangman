@@ -1,3 +1,3 @@
-# Hangman
+# hangman
 
 (work in progress)
