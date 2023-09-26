@@ -20,9 +20,9 @@ const Play: React.FC = () => {
   const badGuesses: LetterItem[] = letters.filter(
     (item: LetterItem) => item.guessState === GuessState.Wrong
   )
-  const remainingGuessesCount: number = 8 - badGuesses.length
+  const remainingAttemptsCount: number = 8 - badGuesses.length
 
-  const isGameLost: boolean = remainingGuessesCount === 0
+  const isGameLost: boolean = remainingAttemptsCount === 0
 
   const isGameWon = (): boolean => {
     return word.split("").every((wordLetter) => {

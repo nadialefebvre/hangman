@@ -17,12 +17,12 @@ const Counter: React.FC = () => {
     (item: LetterItem) => item.guessState === GuessState.Wrong
   )
 
-  const remainingGuessesCount: number = 8 - badGuesses.length
+  const remainingAttemptsCount: number = 8 - badGuesses.length
 
   return (
     <TextCounter>
-      {remainingGuessesCount}
-      {remainingGuessesCount < 2
+      {remainingAttemptsCount}
+      {remainingAttemptsCount < 2
         ? formatMessage(messages.counterSingular)
         : formatMessage(messages.counterPlural)}
     </TextCounter>
