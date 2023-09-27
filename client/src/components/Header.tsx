@@ -10,7 +10,14 @@ interface Props {
 const Header: React.FC<Props> = ({ badGuessesCount }) => {
   const { state } = useContext(GameContext)
 
-  const title = Array.from("hangman!")
+  let title: string[]
+  if (state.language === "fr") {
+    title = ["l", "e ", "p", "e", "n", "d", "u ", "!"]
+  } else if (state.language === "sv") {
+    title = ["hä", "ng", "a g", "u", "b", "b", "e", "!"]
+  } else {
+    title = Array.from("hangman!")
+  }
 
   return (
     <header>
