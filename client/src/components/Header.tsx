@@ -1,7 +1,9 @@
 import React, { useContext } from "react"
+import { useIntl } from "react-intl"
 import styled from "styled-components/macro"
 
 import { GameContext } from "../game/context"
+import messages from "../messages"
 
 interface Props {
   badGuessesCount: number
@@ -9,31 +11,14 @@ interface Props {
 
 const Header: React.FC<Props> = ({ badGuessesCount }) => {
   const { state } = useContext(GameContext)
-
-  let title: string[]
-  if (state.language === "fr") {
-    title = ["l", "e ", "p", "e", "n", "d", "u ", "!"]
-  } else if (state.language === "sv") {
-    title = ["hä", "ng", "a g", "u", "b", "b", "e", "!"]
-  } else {
-    title = Array.from("hangman!")
-  }
+  const { formatMessage } = useIntl()
 
   return (
     <header>
-      <Title>
-        {title.map((item, i) => (
-          <span
-            key={`${i}${item}`}
-            className={
-              i + 1 <= badGuessesCount && state.gamePhase === "Play"
-                ? "has-color"
-                : ""
-            }
-          >
-            {item}
-          </span>
-        ))}
+      <Title
+        stop={state.gamePhase === "Play" ? (badGuessesCount / 8) * 100 : 0}
+      >
+        {formatMessage(messages.title)}
       </Title>
     </header>
   )
@@ -41,10 +26,20 @@ const Header: React.FC<Props> = ({ badGuessesCount }) => {
 
 export default Header
 
-const Title = styled.h1`
+const Title = styled.h1<{ stop?: number | undefined }>`
   font-family: "Press Start 2P", cursive;
   font-size: 96px;
   line-height: 96px;
   text-align: center;
   text-transform: uppercase;
+  margin: auto auto;
+  width: fit-content;
+  background-image: linear-gradient(
+    to right,
+    red ${({ stop }) => stop}%,
+    black ${({ stop }) => stop}%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 `

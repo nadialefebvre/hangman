@@ -1,13 +1,16 @@
 {
-  "app.global.restartButton": "Starta om",
-  "app.global.wordMessage": "Ordet var ",
+  "app.Header.title": "hänga gubbe!",
 
-  "app.start.instructions": "Välj en kategori eller få ett slumpmässigt ord",
+  "app.RestartButton": "Starta om",
 
-  "app.play.counterPlural": " försök kvar",
-  "app.play.counterSingular": " försök kvar",
+  "app.WinOrLose": "Ordet var ",
 
-  "app.win.winMessage": "Du vann!",
+  "app.Start.instructions": "Välj en kategori eller få ett slumpmässigt ord",
 
-  "app.lose.loseMessage": "Du förlorade!"
+  "app.Play.counterPlural": " försök kvar",
+  "app.Play.counterSingular": " försök kvar",
+
+  "app.Win.winMessage": "Du vann!",
+
+  "app.Lose.loseMessage": "Du förlorade!"
 }

@@ -1,13 +1,16 @@
 {
-  "app.global.restartButton": "Restart",
-  "app.global.wordMessage": "The word was ",
+  "app.Header.title": "hangman!",
 
-  "app.start.instructions": "Choose a category or get a random word",
+  "app.RestartButton": "Restart",
 
-  "app.play.counterPlural": " attempts left",
-  "app.play.counterSingular": " attempt left",
+  "app.WinOrLose": "The word was ",
 
-  "app.win.winMessage": "You won!",
+  "app.Start.instructions": "Choose a category or get a random word",
 
-  "app.lose.loseMessage": "You lost!"
+  "app.Play.counterPlural": " attempts left",
+  "app.Play.counterSingular": " attempt left",
+
+  "app.Win.winMessage": "You won!",
+
+  "app.Lose.loseMessage": "You lost!"
 }

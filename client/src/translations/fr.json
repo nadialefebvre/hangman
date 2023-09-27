@@ -1,13 +1,16 @@
 {
-  "app.global.restartButton": "Recommencer",
-  "app.global.wordMessage": "Le mot était ",
+  "app.Header.title": "le pendu !",
 
-  "app.start.instructions": "Choisissez une catégorie ou obtenez un mot au hasard",
+  "app.RestartButton": "Recommencer",
 
-  "app.play.counterPlural": " essais restants",
-  "app.play.counterSingular": " essai restant",
+  "app.WinOrLose": "Le mot était ",
 
-  "app.win.winMessage": "Vous avez gagné !",
+  "app.Start.instructions": "Choisissez une catégorie ou obtenez un mot au hasard",
 
-  "app.lose.loseMessage": "Vous avez perdu !"
+  "app.Play.counterPlural": " essais restants",
+  "app.Play.counterSingular": " essai restant",
+
+  "app.Win.winMessage": "Vous avez gagné !",
+
+  "app.Lose.loseMessage": "Vous avez perdu !"
 }

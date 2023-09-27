@@ -1,18 +1,26 @@
 import { defineMessages } from "react-intl"
 
-const globalScope = "app.global"
-const startScope = "app.start"
-const playScope = "app.play"
-const winScope = "app.win"
-const loseScope = "app.lose"
+const headerScope = "app.Header"
+const restartButtonScope = "app.RestartButton"
+const startScope = "app.Start"
+const playScope = "app.Play"
+const winScope = "app.Win"
+const loseScope = "app.Lose"
+const winOrLoseScope = "app.WinOrLose"
 
 export default defineMessages({
+  title: {
+    id: `${headerScope}.title`,
+    defaultMessage: "hangman!",
+  },
+
   restartButton: {
-    id: `${globalScope}.restartButton`,
+    id: `${restartButtonScope}.restartButton`,
     defaultMessage: "Restart",
   },
+
   wordMessage: {
-    id: `${globalScope}.wordMessage`,
+    id: `${winOrLoseScope}.wordMessage`,
     defaultMessage: "The word was ",
   },
 
