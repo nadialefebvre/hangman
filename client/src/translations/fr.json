@@ -1,9 +1,9 @@
 {
   "app.Header.title": "le pendu !",
 
-  "app.RestartButton": "Recommencer",
+  "app.RestartButton.restartButton": "Recommencer",
 
-  "app.WinOrLose": "Le mot était ",
+  "app.WinOrLose.wordMessage": "Le mot était ",
 
   "app.Start.instructions": "Choisissez une catégorie ou obtenez un mot au hasard",
 

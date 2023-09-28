@@ -1,9 +1,9 @@
 {
   "app.Header.title": "hänga gubbe!",
 
-  "app.RestartButton": "Starta om",
+  "app.RestartButton.restartButton": "Starta om",
 
-  "app.WinOrLose": "Ordet var ",
+  "app.WinOrLose.wordMessage": "Ordet var ",
 
   "app.Start.instructions": "Välj en kategori eller få ett slumpmässigt ord",
 
