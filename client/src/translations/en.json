@@ -6,6 +6,11 @@
   "app.WinOrLose.wordMessage": "The word was ",
 
   "app.Start.instructions": "Choose a category or get a random word",
+  "app.Start.noun": "noun",
+  "app.Start.verb": "verb",
+  "app.Start.adjective": "adjective",
+  "app.Start.adverb": "adverb",
+  "app.Start.random": "random",
 
   "app.Play.counterPlural": " attempts left",
   "app.Play.counterSingular": " attempt left",

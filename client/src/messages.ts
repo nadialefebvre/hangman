@@ -28,7 +28,26 @@ export default defineMessages({
     id: `${startScope}.instructions`,
     defaultMessage: "Choose a category or get a random word",
   },
-  // word types??
+  noun: {
+    id: `${startScope}.noun`,
+    defaultMessage: "noun",
+  },
+  verb: {
+    id: `${startScope}.verb`,
+    defaultMessage: "verb",
+  },
+  adjective: {
+    id: `${startScope}.adjective`,
+    defaultMessage: "adjective",
+  },
+  adverb: {
+    id: `${startScope}.adverb`,
+    defaultMessage: "adverb",
+  },
+  random: {
+    id: `${startScope}.random`,
+    defaultMessage: "random",
+  },
 
   counterPlural: {
     id: `${playScope}.counterPlural`,

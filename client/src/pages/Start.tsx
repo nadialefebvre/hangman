@@ -28,7 +28,6 @@ const Start: React.FC = () => {
     }
   }
 
-  // need to fix language for categories as well... (all in EN for now)
   return (
     <>
       <Preamble>{formatMessage(messages.instructions)}</Preamble>
@@ -38,7 +37,7 @@ const Start: React.FC = () => {
             key={category}
             onClick={() => fetchRandomWord(category, state.language)}
           >
-            {category}
+            {formatMessage(messages[category as keyof typeof messages])}
           </Button>
         ))}
       </ButtonsDiv>

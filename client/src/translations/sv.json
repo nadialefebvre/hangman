@@ -6,6 +6,11 @@
   "app.WinOrLose.wordMessage": "Ordet var ",
 
   "app.Start.instructions": "Välj en kategori eller få ett slumpmässigt ord",
+  "app.Start.noun": "substantiv",
+  "app.Start.verb": "verb",
+  "app.Start.adjective": "adjektiv",
+  "app.Start.adverb": "adverb",
+  "app.Start.random": "slumpvis",
 
   "app.Play.counterPlural": " försök kvar",
   "app.Play.counterSingular": " försök kvar",
