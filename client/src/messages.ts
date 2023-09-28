@@ -67,4 +67,17 @@ export default defineMessages({
     id: `${loseScope}.loseMessage`,
     defaultMessage: "You LOST!",
   },
+
+  alertNotALetter: {
+    id: "app.alertNotALetter",
+    defaultMessage: "Only letters from A to {endOfAlphabet} are allowed.",
+  },
+  alertGoodGuess: {
+    id: "app.alertGoodGuess",
+    defaultMessage: "You already made a GOOD guess on the letter {letter}.",
+  },
+  alertBadGuess: {
+    id: "app.alertBadGuess",
+    defaultMessage: "You already made a BAD guess on the letter {letter}.",
+  },
 })

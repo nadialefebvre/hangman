@@ -17,5 +17,9 @@
 
   "app.Win.winMessage": "Vous avez gagné !",
 
-  "app.Lose.loseMessage": "Vous avez perdu !"
+  "app.Lose.loseMessage": "Vous avez perdu !",
+
+  "app.alertNotALetter": "Seules les lettres de A à {endOfAlphabet} sont autorisées.",
+  "app.alertGoodGuess": "Vous avez déjà BIEN deviné la lettre {letter}.",
+  "app.alertBadGuess": "Vous avez déjà MAL deviné la lettre {letter}."
 }
