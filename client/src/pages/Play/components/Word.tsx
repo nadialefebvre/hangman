@@ -10,14 +10,14 @@ const Word: React.FC = () => {
 
   const wordLetters: string[] = Array.from(state.randomWord)
 
-  const letters: LetterItem[] = state.letters
+  const alphabet: LetterItem[] = state.alphabet
 
   const isAGoodGuess = (letter: string): boolean => {
-    const letterIndex: number = letters.findIndex(
+    const letterIndex: number = alphabet.findIndex(
       (item: LetterItem) =>
         item.letter === stringWithoutDiacritics(letter, state.language)
     )
-    return letters[letterIndex].guessState === GuessState.Correct
+    return alphabet[letterIndex].guessState === GuessState.Correct
   }
 
   return (

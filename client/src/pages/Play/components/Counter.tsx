@@ -11,9 +11,9 @@ const Counter: React.FC = () => {
 
   const { formatMessage } = useIntl()
 
-  const letters: LetterItem[] = state.letters
+  const alphabet: LetterItem[] = state.alphabet
 
-  const badGuesses: LetterItem[] = letters.filter(
+  const badGuesses: LetterItem[] = alphabet.filter(
     (item: LetterItem) => item.guessState === GuessState.Wrong
   )
 

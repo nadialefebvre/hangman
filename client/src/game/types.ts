@@ -13,7 +13,7 @@ type GameState = {
   language: string
   gamePhase: "Start" | "Play" | "Win" | "Lose"
   randomWord: string
-  letters: LetterItem[]
+  alphabet: LetterItem[]
 }
 
 type GameAction =
@@ -29,4 +29,4 @@ type GameAction =
   | { type: "GUESS_ONE_LETTER"; payload: LetterItem }
 
 export { GuessState }
-export type { LetterItem, GameState, GameAction }
+export type { GameAction, GameState, LetterItem }

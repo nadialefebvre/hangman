@@ -1,13 +1,13 @@
 import { Reducer } from "react"
 import { GameAction, GameState, GuessState } from "./types"
 
-const arrayLength = navigator.language.split("-")[0] === "sv" ? 29 : 26
+const alphabetLength = navigator.language.split("-")[0] === "sv" ? 29 : 26
 
 const initialState: GameState = {
   language: navigator.language.split("-")[0],
   gamePhase: "Start",
   randomWord: "",
-  letters: [...Array(arrayLength)].map((_, i) => ({
+  alphabet: [...Array(alphabetLength)].map((_, i) => ({
     letter: i < 26 ? String.fromCharCode(i + 97) : ["å", "ä", "ö"][i - 26],
     guessState: GuessState.Untouched,
   })),
@@ -35,7 +35,7 @@ const gameReducer: Reducer<GameState, GameAction> = (
       const guessedLetterState: GuessState = action.payload.guessState
       return {
         ...state,
-        letters: state.letters.map((item) =>
+        alphabet: state.alphabet.map((item) =>
           item.letter === guessedLetter
             ? { ...item, guessState: guessedLetterState }
             : item

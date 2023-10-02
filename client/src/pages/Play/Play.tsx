@@ -16,9 +16,9 @@ const Play: React.FC = () => {
 
   const word: string = stringWithoutDiacritics(state.randomWord, state.language)
 
-  const letters: LetterItem[] = state.letters
+  const alphabet: LetterItem[] = state.alphabet
 
-  const badGuesses: LetterItem[] = letters.filter(
+  const badGuesses: LetterItem[] = alphabet.filter(
     (item: LetterItem) => item.guessState === GuessState.Wrong
   )
   const remainingAttemptsCount: number = 8 - badGuesses.length
@@ -27,7 +27,7 @@ const Play: React.FC = () => {
 
   const isGameWon = (): boolean => {
     return word.split("").every((wordLetter) => {
-      return letters.find(
+      return alphabet.find(
         (letter) =>
           letter.letter === wordLetter &&
           letter.guessState === GuessState.Correct

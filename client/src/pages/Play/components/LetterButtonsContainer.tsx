@@ -14,15 +14,15 @@ const LetterButtonsContainer: React.FC<LetterButtonsContainerProps> = ({
 }) => {
   const { state } = useContext(GameContext)
 
-  const letters: LetterItem[] = state.letters
+  const alphabet: LetterItem[] = state.alphabet
 
   const guessState = (letter: LetterItem) => {
-    return letters.find((item) => item === letter)?.guessState
+    return alphabet.find((item) => item === letter)?.guessState
   }
 
   return (
     <LettersContainer>
-      {letters.map((item: LetterItem) => (
+      {alphabet.map((item: LetterItem) => (
         <LetterButton
           key={item.letter}
           letter={item.letter}

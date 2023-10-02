@@ -12,7 +12,7 @@ const useHandleKeyDown = () => {
 
   const { guessOneLetter } = useGuessOneLetter()
 
-  const letters: LetterItem[] = state.letters
+  const alphabet: LetterItem[] = state.alphabet
 
   const endOfAlphabet: string = state.language === "sv" ? "Ö" : "Z"
 
@@ -25,16 +25,16 @@ const useHandleKeyDown = () => {
   const handleKeyDown = (event: KeyboardEvent) => {
     const key: string = event.key.toLowerCase()
 
-    const letterIndex: number = letters.findIndex(
+    const letterIndex: number = alphabet.findIndex(
       (item: LetterItem) => item.letter === key
     )
 
     if (isLetter(key)) {
-      if (letters[letterIndex].guessState === GuessState.Correct) {
+      if (alphabet[letterIndex].guessState === GuessState.Correct) {
         alert(
           formatMessage(messages.alertGoodGuess, { letter: key.toUpperCase() })
         )
-      } else if (letters[letterIndex].guessState === GuessState.Wrong) {
+      } else if (alphabet[letterIndex].guessState === GuessState.Wrong) {
         alert(
           formatMessage(messages.alertBadGuess, { letter: key.toUpperCase() })
         )
