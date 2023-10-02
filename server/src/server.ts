@@ -13,8 +13,6 @@ const port = process.env.PORT || 8080
 
 const EXTERNAL_API_URL = "https://api.api-ninjas.com/v1/randomword"
 
-let wordToGuess: string
-
 app.get("/", (req, res) => {
   res.send("This is my server!")
 })
@@ -35,27 +33,28 @@ const fetchRandomWord = async (
     return wordsListToUse[Math.floor(Math.random() * wordsListToUse.length)]
   }
 
-  // add a max length for word, for example: `&& word.length > 10`
-  const isValidWord = (word: string): boolean => word === word.toLowerCase()
+  const isValidWord = (word: string): boolean =>
+    word === word.toLowerCase() && word.length <= 12
+
+  let wordToGuess: string
 
   try {
     if (language === "fr") {
-      console.log(setRandomWord(frData))
-      return setRandomWord(frData)
+      wordToGuess = setRandomWord(frData)
     } else if (language === "sv") {
-      return setRandomWord(svData)
+      wordToGuess = setRandomWord(svData)
+    } else {
+      let response
+      do {
+        response = await fetch(`${EXTERNAL_API_URL}?type=${category}`, {
+          method: "GET",
+          headers: { "X-Api-Key": `${process.env.REACT_APP_API_NINJAS_KEY}` },
+        })
+        const data = await response.json()
+        wordToGuess = data.word
+      } while (!isValidWord(wordToGuess))
     }
 
-    let response
-    do {
-      response = await fetch(`${EXTERNAL_API_URL}?type=${category}`, {
-        method: "GET",
-        headers: { "X-Api-Key": `${process.env.REACT_APP_API_NINJAS_KEY}` },
-      })
-
-      const data = await response.json()
-      wordToGuess = data.word
-    } while (!isValidWord(wordToGuess))
     console.log(wordToGuess)
     return wordToGuess
   } catch (error) {
