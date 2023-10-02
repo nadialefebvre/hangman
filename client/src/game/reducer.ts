@@ -11,7 +11,7 @@ const initialState: GameState = {
   randomWord: "",
   alphabet: [...Array(alphabetLength)].map((_, i) => ({
     letter: i < 26 ? String.fromCharCode(i + 97) : ["å", "ä", "ö"][i - 26],
-    guessState: GuessState.Untouched,
+    guessState: GuessState.Pending,
   })),
 }
 

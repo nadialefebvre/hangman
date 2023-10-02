@@ -2,8 +2,8 @@ import React, { useContext } from "react"
 import styled from "styled-components/macro"
 
 import { GameContext } from "../../../game/context"
-import useGuessOneLetter from "../hooks/useGuessOneLetter"
 import { GuessState } from "../../../game/types"
+import useGuessOneLetter from "../hooks/useGuessOneLetter"
 
 interface LetterButtonProps {
   letter: string
@@ -23,7 +23,7 @@ const LetterButton: React.FC<LetterButtonProps> = ({
   return (
     <LetterButtonStyled
       isSwedishKeyboard={state.language === "sv"}
-      disabled={guessState !== "UNTOUCHED" || isEndOfGame}
+      disabled={guessState !== "PENDING" || isEndOfGame}
       onClick={() => guessOneLetter(letter)}
       isEndOfGame={isEndOfGame}
       guessState={guessState}
@@ -59,7 +59,7 @@ const LetterButtonStyled = styled.button<LetterButtonStyledProps>`
         : "rgba(255, 0, 0, 0.1)"};
 
     background: ${({ guessState, isEndOfGame }) =>
-      guessState === "UNTOUCHED" && isEndOfGame && "rgba(54, 54, 54, 0.1)"};
+      guessState === "PENDING" && isEndOfGame && "rgba(54, 54, 54, 0.1)"};
   }
 
   span {

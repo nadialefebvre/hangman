@@ -1,5 +1,5 @@
 enum GuessState {
-  Untouched = "UNTOUCHED",
+  Pending = "PENDING",
   Correct = "CORRECT",
   Wrong = "WRONG",
 }
