@@ -58,7 +58,7 @@ const Play: React.FC = () => {
 
   return (
     <>
-      <Counter />
+      <Counter remainingAttemptsCount={remainingAttemptsCount} />
       <LetterButtonsContainer isEndOfGame={isGameLost || isGameWon()} />
       <Word />
       <RestartButton />
