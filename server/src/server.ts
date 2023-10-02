@@ -13,7 +13,7 @@ const port = process.env.PORT || 8080
 
 const EXTERNAL_API_URL = "https://api.api-ninjas.com/v1/randomword"
 
-let wordToGuess = ""
+let wordToGuess: string
 
 app.get("/", (req, res) => {
   res.send("This is my server!")
@@ -40,9 +40,8 @@ const fetchRandomWord = async (
 
   try {
     if (language === "fr") {
+      console.log(setRandomWord(frData))
       return setRandomWord(frData)
-        .normalize("NFD")
-        .replace(/\p{Diacritic}/gu, "")
     } else if (language === "sv") {
       return setRandomWord(svData)
     }

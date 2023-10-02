@@ -3,6 +3,7 @@ import styled from "styled-components/macro"
 
 import { GameContext } from "../../../game/context"
 import { GuessState, LetterItem } from "../../../game/types"
+import { stringWithoutDiacritics } from "../../../utils/stringWithoutDiacritics"
 
 const Word: React.FC = () => {
   const { state } = useContext(GameContext)
@@ -13,7 +14,8 @@ const Word: React.FC = () => {
 
   const isAGoodGuess = (letter: string): boolean => {
     const letterIndex: number = letters.findIndex(
-      (item: LetterItem) => item.letter === letter
+      (item: LetterItem) =>
+        item.letter === stringWithoutDiacritics(letter, state.language)
     )
     return letters[letterIndex].guessState === GuessState.Correct
   }

@@ -3,17 +3,18 @@ import React, { useContext, useEffect } from "react"
 import RestartButton from "../../components/common/RestartButton"
 import { GameContext } from "../../game/context"
 import { GuessState, LetterItem } from "../../game/types"
+import { stringWithoutDiacritics } from "../../utils/stringWithoutDiacritics"
 import Counter from "./components/Counter"
 import LetterButtonsContainer from "./components/LetterButtonsContainer"
 import Word from "./components/Word"
-import useHandleKeyDown from "./hooks/usehandleKeyDown"
+import useHandleKeyDown from "./hooks/useHandleKeyDown"
 
 const Play: React.FC = () => {
   const { state, dispatch } = useContext(GameContext)
 
   const { handleKeyDown } = useHandleKeyDown()
 
-  const word: string = state.randomWord
+  const word: string = stringWithoutDiacritics(state.randomWord, state.language)
 
   const letters: LetterItem[] = state.letters
 
@@ -52,6 +53,8 @@ const Play: React.FC = () => {
     }
     return () => window.removeEventListener("keydown", handleKeyDown)
   })
+
+  // add this to some instructions in Play: "Press ENTER or ESC to escape the game"
 
   return (
     <>
