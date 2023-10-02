@@ -15,8 +15,13 @@ const Lose: React.FC = () => {
     <>
       <StyledText>{formatMessage(messages.loseMessage)}</StyledText>
       <StyledText>
-        {formatMessage(messages.wordMessage)}
-        <StyledTextRedBig>{state.randomWord.toUpperCase()}</StyledTextRedBig>
+        {formatMessage(messages.wordMessage, {
+          word: (
+            <StyledTextRedBig>
+              {state.randomWord.toUpperCase()}
+            </StyledTextRedBig>
+          ),
+        })}
       </StyledText>
 
       <RestartButton />

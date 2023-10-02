@@ -15,10 +15,13 @@ const Win: React.FC = () => {
     <>
       <StyledTextGreen>{formatMessage(messages.winMessage)}</StyledTextGreen>
       <StyledText>
-        {formatMessage(messages.wordMessage)}
-        <StyledTextGreenBig>
-          {state.randomWord.toUpperCase()}
-        </StyledTextGreenBig>
+        {formatMessage(messages.wordMessage, {
+          word: (
+            <StyledTextGreenBig>
+              {state.randomWord.toUpperCase()}
+            </StyledTextGreenBig>
+          ),
+        })}
       </StyledText>
       <RestartButton />
     </>

@@ -3,7 +3,7 @@
 
   "app.RestartButton.restartButton": "Recommencer",
 
-  "app.WinOrLose.wordMessage": "Le mot était ",
+  "app.WinOrLose.wordMessage": "Le mot était {word}",
 
   "app.Start.instructions": "Choisissez une catégorie ou obtenez un mot au hasard",
   "app.Start.noun": "nom",
@@ -12,8 +12,8 @@
   "app.Start.adverb": "adverbe",
   "app.Start.random": "hasard",
 
-  "app.Play.counterPlural": " essais restants",
-  "app.Play.counterSingular": " essai restant",
+  "app.Play.counterPlural": "{remainingAttemptsCount} essais restants",
+  "app.Play.counterSingular": "{remainingAttemptsCount} essai restant",
 
   "app.Win.winMessage": "Vous avez gagné !",
 

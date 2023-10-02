@@ -3,7 +3,7 @@
 
   "app.RestartButton.restartButton": "Restart",
 
-  "app.WinOrLose.wordMessage": "The word was ",
+  "app.WinOrLose.wordMessage": "The word was {word}",
 
   "app.Start.instructions": "Choose a category or get a random word",
   "app.Start.noun": "noun",
@@ -12,8 +12,8 @@
   "app.Start.adverb": "adverb",
   "app.Start.random": "random",
 
-  "app.Play.counterPlural": " attempts left",
-  "app.Play.counterSingular": " attempt left",
+  "app.Play.counterPlural": "{remainingAttemptsCount} attempts left",
+  "app.Play.counterSingular": "{remainingAttemptsCount} attempt left",
 
   "app.Win.winMessage": "You won!",
 

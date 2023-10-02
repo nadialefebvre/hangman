@@ -21,7 +21,7 @@ export default defineMessages({
 
   wordMessage: {
     id: `${winOrLoseScope}.wordMessage`,
-    defaultMessage: "The word was ",
+    defaultMessage: "The word was {word}",
   },
 
   instructions: {
@@ -51,11 +51,11 @@ export default defineMessages({
 
   counterPlural: {
     id: `${playScope}.counterPlural`,
-    defaultMessage: " attempts left",
+    defaultMessage: "{remainingAttemptsCount} attempts left",
   },
   counterSingular: {
     id: `${playScope}.counterSingular`,
-    defaultMessage: " attempt left",
+    defaultMessage: "{remainingAttemptsCount} attempt left",
   },
 
   winMessage: {

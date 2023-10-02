@@ -3,7 +3,7 @@
 
   "app.RestartButton.restartButton": "Starta om",
 
-  "app.WinOrLose.wordMessage": "Ordet var ",
+  "app.WinOrLose.wordMessage": "Ordet var {word}",
 
   "app.Start.instructions": "Välj en kategori eller få ett slumpmässigt ord",
   "app.Start.noun": "substantiv",
@@ -12,8 +12,8 @@
   "app.Start.adverb": "adverb",
   "app.Start.random": "slumpvis",
 
-  "app.Play.counterPlural": " försök kvar",
-  "app.Play.counterSingular": " försök kvar",
+  "app.Play.counterPlural": "{remainingAttemptsCount} försök kvar",
+  "app.Play.counterSingular": "{remainingAttemptsCount} försök kvar",
 
   "app.Win.winMessage": "Du vann!",
 
