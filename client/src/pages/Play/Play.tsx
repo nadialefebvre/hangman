@@ -48,10 +48,22 @@ const Play: React.FC = () => {
   }
 
   useEffect(() => {
+    // Issue only with Firefox
+    // After clicking on a letter button, focus stays on button instead of "returning" to body after
+    // Then the browser is not listening to keydown eventListener anymore
+    // https://stackoverflow.com/questions/6976486/is-there-any-way-in-javascript-to-focus-the-document-content-area
+    // The following removes focus from any focused element, solving this issue
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur()
+    }
+
     if (!isGameLost && !isGameWon()) {
       window.addEventListener("keydown", handleKeyDown)
     }
-    return () => window.removeEventListener("keydown", handleKeyDown)
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown)
+    }
   })
 
   // add this to some instructions in Play: "Press ENTER or ESC to escape the game"
