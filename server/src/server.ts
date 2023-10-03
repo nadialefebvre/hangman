@@ -28,7 +28,16 @@ const fetchRandomWord = async (
 ) => {
   // ideally create database with lists of words for FR and SV...
   const setRandomWord = (data: WordsListData) => {
-    const wordsListToUse = data[category as string]
+    let wordsListToUse: string[]
+
+    if (category === "random") {
+      const categories = Object.keys(data)
+      const randomCategory =
+        categories[Math.floor(Math.random() * categories.length)]
+      wordsListToUse = data[randomCategory]
+    } else {
+      wordsListToUse = data[category as string]
+    }
 
     return wordsListToUse[Math.floor(Math.random() * wordsListToUse.length)]
   }
