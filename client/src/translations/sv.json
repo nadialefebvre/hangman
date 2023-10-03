@@ -20,6 +20,6 @@
   "app.Lose.loseMessage": "Du förlorade!",
 
   "app.alertNotALetter": "Endast bokstäver från A till {endOfAlphabet} är tillåtna.",
-  "app.alertGoodGuess": "Du har redan gissat BRA på bokstaven {letter}.",
-  "app.alertBadGuess": "Du har redan gissat FEL på bokstaven {letter}."
+  "app.alertCorrectGuess": "Du har redan gissat BRA på bokstaven {letter}.",
+  "app.alertWrongGuess": "Du har redan gissat FEL på bokstaven {letter}."
 }

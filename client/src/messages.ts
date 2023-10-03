@@ -72,12 +72,12 @@ export default defineMessages({
     id: "app.alertNotALetter",
     defaultMessage: "Only letters from A to {endOfAlphabet} are allowed.",
   },
-  alertGoodGuess: {
-    id: "app.alertGoodGuess",
-    defaultMessage: "You already made a GOOD guess on the letter {letter}.",
+  alertCorrectGuess: {
+    id: "app.alertCorrectGuess",
+    defaultMessage: "You already made a CORRECT guess on the letter {letter}.",
   },
-  alertBadGuess: {
-    id: "app.alertBadGuess",
-    defaultMessage: "You already made a BAD guess on the letter {letter}.",
+  alertWrongGuess: {
+    id: "app.alertWrongGuess",
+    defaultMessage: "You already made a WRONG guess on the letter {letter}.",
   },
 })

@@ -20,6 +20,6 @@
   "app.Lose.loseMessage": "You lost!",
 
   "app.alertNotALetter": "Only letters from A to {endOfAlphabet} are allowed.",
-  "app.alertGoodGuess": "You already made a GOOD guess on the letter {letter}.",
-  "app.alertBadGuess": "You already made a BAD guess on the letter {letter}."
+  "app.alertCorrectGuess": "You already made a CORRECT guess on the letter {letter}.",
+  "app.alertWrongGuess": "You already made a WRONG guess on the letter {letter}."
 }

@@ -33,11 +33,13 @@ const useHandleKeyDown = () => {
     if (isLetter(key)) {
       if (alphabet[letterIndex].guessState === GuessState.Correct) {
         alert(
-          formatMessage(messages.alertGoodGuess, { letter: key.toUpperCase() })
+          formatMessage(messages.alertCorrectGuess, {
+            letter: key.toUpperCase(),
+          })
         )
       } else if (alphabet[letterIndex].guessState === GuessState.Wrong) {
         alert(
-          formatMessage(messages.alertBadGuess, { letter: key.toUpperCase() })
+          formatMessage(messages.alertWrongGuess, { letter: key.toUpperCase() })
         )
       } else {
         guessOneLetter(key)

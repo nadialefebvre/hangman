@@ -6,17 +6,17 @@ import { GameContext } from "../game/context"
 import messages from "../messages"
 
 interface Props {
-  badGuessesCount: number
+  wrongGuessesCount: number
 }
 
-const Header: React.FC<Props> = ({ badGuessesCount }) => {
+const Header: React.FC<Props> = ({ wrongGuessesCount }) => {
   const { state } = useContext(GameContext)
   const { formatMessage } = useIntl()
 
   return (
     <header>
       <Title
-        stop={state.gamePhase === "Play" ? (badGuessesCount / 8) * 100 : 0}
+        stop={state.gamePhase === "Play" ? (wrongGuessesCount / 8) * 100 : 0}
       >
         {formatMessage(messages.title)}
       </Title>

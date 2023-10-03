@@ -18,10 +18,10 @@ const Play: React.FC = () => {
 
   const alphabet: LetterItem[] = state.alphabet
 
-  const badGuesses: LetterItem[] = alphabet.filter(
+  const wrongGuesses: LetterItem[] = alphabet.filter(
     (item: LetterItem) => item.guessState === GuessState.Wrong
   )
-  const remainingAttemptsCount: number = 8 - badGuesses.length
+  const remainingAttemptsCount: number = 8 - wrongGuesses.length
 
   const isGameLost: boolean = remainingAttemptsCount === 0
 

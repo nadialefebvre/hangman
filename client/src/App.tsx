@@ -27,7 +27,7 @@ const App: React.FC = () => {
 
   const alphabet: LetterItem[] = state.alphabet
 
-  const badGuesses: LetterItem[] = alphabet.filter(
+  const wrongGuesses: LetterItem[] = alphabet.filter(
     (item: LetterItem) => item.guessState === GuessState.Wrong
   )
 
@@ -43,12 +43,12 @@ const App: React.FC = () => {
             <div
               key={step}
               className={`step${step} ${
-                step <= badGuesses.length ? "has-background" : ""
+                step <= wrongGuesses.length ? "has-background" : ""
               }`}
             />
           ))}
         <InnerWrapper>
-          <Header badGuessesCount={badGuesses.length} />
+          <Header wrongGuessesCount={wrongGuesses.length} />
           {state.gamePhase === "Start" && <Start />}
           {state.gamePhase === "Play" && <Play />}
           {state.gamePhase === "Win" && <Win />}

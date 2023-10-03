@@ -12,7 +12,7 @@ const Word: React.FC = () => {
 
   const alphabet: LetterItem[] = state.alphabet
 
-  const isAGoodGuess = (letter: string): boolean => {
+  const isACorrectGuess = (letter: string): boolean => {
     const letterIndex: number = alphabet.findIndex(
       (item: LetterItem) =>
         item.letter === stringWithoutDiacritics(letter, state.language)
@@ -23,7 +23,7 @@ const Word: React.FC = () => {
   return (
     <StyledWord>
       {wordLetters.map((letter: string, i) => (
-        <SingleLetter key={`${i}${letter}`} isVisible={isAGoodGuess(letter)}>
+        <SingleLetter key={`${i}${letter}`} isVisible={isACorrectGuess(letter)}>
           <span>{letter}</span>
         </SingleLetter>
       ))}
