@@ -60,6 +60,7 @@ const LetterButtonStyled = styled.button<LetterButtonStyledProps>`
 
     background: ${({ guessState, isEndOfGame }) =>
       guessState === "PENDING" && isEndOfGame && "rgba(54, 54, 54, 0.1)"};
+    cursor: not-allowed;
   }
 
   span {
