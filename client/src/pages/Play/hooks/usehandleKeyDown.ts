@@ -14,7 +14,8 @@ const useHandleKeyDown = () => {
 
   const alphabet: LetterItem[] = state.alphabet
 
-  const endOfAlphabet: string = state.language === "sv" ? "Ö" : "Z"
+  const endOfAlphabet: string =
+    alphabet[alphabet.length - 1].letter.toUpperCase()
 
   const isLetter = (key: string): boolean =>
     state.language === "sv" ? /^[a-zåöä]$/.test(key) : /^[a-z]$/.test(key)
