@@ -3,7 +3,7 @@ import styled from "styled-components/macro"
 
 import { GameContext } from "../../../game/context"
 import { GuessState } from "../../../game/types"
-import useGuessOneLetter from "../hooks/useGuessOneLetter"
+import useGuessOneLetter from "../../../hooks/useGuessOneLetter"
 
 interface LetterButtonProps {
   letter: string
@@ -64,7 +64,6 @@ const LetterButtonStyled = styled.button<LetterButtonStyledProps>`
   }
 
   span {
-    font-family: "Press Start 2P";
     font-size: 32px;
     text-transform: uppercase;
     text-align: center;

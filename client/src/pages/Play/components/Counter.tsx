@@ -23,6 +23,6 @@ const Counter: React.FC<CounterProps> = ({ remainingAttemptsCount }) => {
 export default Counter
 
 const TextCounter = styled.div`
-  font-family: "Press Start 2P";
+  text-align: center;
   font-size: 32px;
 `

@@ -38,6 +38,7 @@ export default LetterButtonsContainer
 
 const LettersContainer = styled.div`
   width: 800px;
+  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;

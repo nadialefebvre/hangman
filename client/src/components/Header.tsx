@@ -10,11 +10,23 @@ interface Props {
 }
 
 const Header: React.FC<Props> = ({ wrongGuessesCount }) => {
-  const { state } = useContext(GameContext)
+  const { state, dispatch } = useContext(GameContext)
   const { formatMessage } = useIntl()
+
+  const onRestart = (): void => {
+    dispatch({ type: "RESET_GAME" })
+  }
 
   return (
     <header>
+      {state.gamePhase !== "Start" && (
+        <RestartIcon
+          src="./assets/restart.svg"
+          alt={formatMessage(messages.restartButton)}
+          width={50}
+          onClick={onRestart}
+        />
+      )}
       <Title
         stop={state.gamePhase === "Play" ? (wrongGuessesCount / 8) * 100 : 0}
       >
@@ -26,8 +38,14 @@ const Header: React.FC<Props> = ({ wrongGuessesCount }) => {
 
 export default Header
 
+const RestartIcon = styled.img`
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  cursor: pointer;
+`
+
 const Title = styled.h1<{ stop?: number | undefined }>`
-  font-family: "Press Start 2P", cursive;
   font-size: 96px;
   line-height: 96px;
   text-align: center;

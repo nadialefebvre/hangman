@@ -2,7 +2,6 @@ import React, { useContext } from "react"
 import { useIntl } from "react-intl"
 import styled from "styled-components/macro"
 
-import Button from "../components/common/Button"
 import { GameContext } from "../game/context"
 import messages from "../messages"
 import { API_URL } from "../utils/urls"
@@ -48,7 +47,6 @@ const Start: React.FC = () => {
 export default Start
 
 const Preamble = styled.h2`
-  font-family: "Press Start 2P";
   font-size: 32px;
   line-height: 156%;
   color: #000000;
@@ -58,4 +56,17 @@ const Preamble = styled.h2`
 const ButtonsDiv = styled.div`
   display: flex;
   justify-content: center;
+`
+
+const Button = styled.button`
+  margin: 10px;
+  width: 220px;
+  height: 68px;
+  background: #363636;
+  border: none;
+  font-size: 20px;
+  line-height: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #ffffff;
 `

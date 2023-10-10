@@ -2,7 +2,6 @@ import React, { useContext } from "react"
 import { useIntl } from "react-intl"
 import styled from "styled-components/macro"
 
-import RestartButton from "../components/common/RestartButton"
 import { GameContext } from "../game/context"
 import messages from "../messages"
 
@@ -23,7 +22,6 @@ const Win: React.FC = () => {
           ),
         })}
       </StyledText>
-      <RestartButton />
     </>
   )
 }
@@ -31,7 +29,6 @@ const Win: React.FC = () => {
 export default Win
 
 const StyledText = styled.p`
-  font-family: "Press Start 2P";
   font-size: 32px;
 `
 

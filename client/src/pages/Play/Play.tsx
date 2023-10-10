@@ -1,13 +1,12 @@
 import React, { useContext, useEffect } from "react"
 
-import RestartButton from "../../components/common/RestartButton"
 import { GameContext } from "../../game/context"
 import { GuessState, LetterItem } from "../../game/types"
+import useHandleKeyDown from "../../hooks/useHandleKeyDown"
 import { stringWithoutDiacritics } from "../../utils/stringWithoutDiacritics"
 import Counter from "./components/Counter"
 import LetterButtonsContainer from "./components/LetterButtonsContainer"
 import Word from "./components/Word"
-import useHandleKeyDown from "./hooks/useHandleKeyDown"
 
 const Play: React.FC = () => {
   const { state, dispatch } = useContext(GameContext)
@@ -73,7 +72,6 @@ const Play: React.FC = () => {
       <Counter remainingAttemptsCount={remainingAttemptsCount} />
       <LetterButtonsContainer isEndOfGame={isGameLost || isGameWon()} />
       <Word />
-      <RestartButton />
     </>
   )
 }

@@ -2,7 +2,6 @@ import React, { useContext } from "react"
 import { useIntl } from "react-intl"
 import styled from "styled-components/macro"
 
-import RestartButton from "../components/common/RestartButton"
 import { GameContext } from "../game/context"
 import messages from "../messages"
 
@@ -16,15 +15,9 @@ const Lose: React.FC = () => {
       <StyledText>{formatMessage(messages.loseMessage)}</StyledText>
       <StyledText>
         {formatMessage(messages.wordMessage, {
-          word: (
-            <StyledTextRedBig>
-              {state.randomWord.toUpperCase()}
-            </StyledTextRedBig>
-          ),
+          word: <StyledTextBig>{state.randomWord.toUpperCase()}</StyledTextBig>,
         })}
       </StyledText>
-
-      <RestartButton />
     </>
   )
 }
@@ -32,10 +25,9 @@ const Lose: React.FC = () => {
 export default Lose
 
 const StyledText = styled.p`
-  font-family: "Press Start 2P";
   font-size: 32px;
 `
 
-const StyledTextRedBig = styled.span`
+const StyledTextBig = styled.span`
   font-size: 48px;
 `
