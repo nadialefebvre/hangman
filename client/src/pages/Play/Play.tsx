@@ -1,14 +1,18 @@
 import React, { useContext, useEffect } from "react"
+import { useIntl } from "react-intl"
 
 import { GameContext } from "../../game/context"
 import { GuessState, LetterItem } from "../../game/types"
 import useHandleKeyDown from "../../hooks/useHandleKeyDown"
+import messages from "../../messages"
 import { stringWithoutDiacritics } from "../../utils/stringWithoutDiacritics"
 import Counter from "./components/Counter"
 import LetterButtonsContainer from "./components/LetterButtonsContainer"
 import Word from "./components/Word"
 
 const Play: React.FC = () => {
+  const { formatMessage } = useIntl()
+
   const { state, dispatch } = useContext(GameContext)
 
   const { handleKeyDown } = useHandleKeyDown()
@@ -64,6 +68,14 @@ const Play: React.FC = () => {
       window.removeEventListener("keydown", handleKeyDown)
     }
   })
+
+  const favicon = document.getElementById("favicon")
+  if (favicon instanceof HTMLLinkElement && wrongGuesses.length > 0) {
+    favicon.href = `favicon-${wrongGuesses.length}.svg`
+  }
+
+  document.title =
+    formatMessage(messages.title) + " — " + formatMessage(messages.playMessage)
 
   // add this to some instructions in Play: "Press ENTER or ESC to escape the game"
 

@@ -27,6 +27,14 @@ const Start: React.FC = () => {
     }
   }
 
+  document.title =
+    formatMessage(messages.title) + " — " + formatMessage(messages.startMessage)
+
+  const favicon = document.getElementById("favicon")
+  if (favicon instanceof HTMLLinkElement) {
+    favicon.href = "favicon.svg"
+  }
+
   return (
     <>
       <Preamble>{formatMessage(messages.instructions)}</Preamble>

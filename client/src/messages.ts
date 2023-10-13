@@ -1,7 +1,6 @@
 import { defineMessages } from "react-intl"
 
 const headerScope = "app.Header"
-const restartButtonScope = "app.RestartButton"
 const startScope = "app.Start"
 const playScope = "app.Play"
 const winScope = "app.Win"
@@ -11,11 +10,10 @@ const winOrLoseScope = "app.WinOrLose"
 export default defineMessages({
   title: {
     id: `${headerScope}.title`,
-    defaultMessage: "hangman!",
+    defaultMessage: "Hangman!",
   },
-
   restartButton: {
-    id: `${restartButtonScope}.restartButton`,
+    id: `${headerScope}.restartButton`,
     defaultMessage: "Restart",
   },
 
@@ -24,6 +22,10 @@ export default defineMessages({
     defaultMessage: "The word was {word}",
   },
 
+  startMessage: {
+    id: `${startScope}.startMessage`,
+    defaultMessage: "Make your choice",
+  },
   instructions: {
     id: `${startScope}.instructions`,
     defaultMessage: "Choose a category or get a random word",
@@ -49,6 +51,10 @@ export default defineMessages({
     defaultMessage: "random",
   },
 
+  playMessage: {
+    id: `${playScope}.playMessage`,
+    defaultMessage: "Game in progress",
+  },
   counterPlural: {
     id: `${playScope}.counterPlural`,
     defaultMessage: "{remainingAttemptsCount} attempts left",
@@ -60,12 +66,12 @@ export default defineMessages({
 
   winMessage: {
     id: `${winScope}.winMessage`,
-    defaultMessage: "You WON!",
+    defaultMessage: "You won!",
   },
 
   loseMessage: {
     id: `${loseScope}.loseMessage`,
-    defaultMessage: "You LOST!",
+    defaultMessage: "You lost!",
   },
 
   alertNotALetter: {

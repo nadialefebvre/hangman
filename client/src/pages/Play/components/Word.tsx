@@ -35,6 +35,8 @@ export default Word
 
 const StyledWord = styled.div`
   margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
 `
 
 interface SingleLetterProps {
@@ -49,7 +51,6 @@ const SingleLetter = styled.span<SingleLetterProps>`
   height: 40px;
 
   span {
-    font-family: "Press Start 2P";
     font-size: 48px;
     visibility: ${({ isVisible }) => (isVisible ? "visible" : "hidden")};
   }

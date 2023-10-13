@@ -1,10 +1,10 @@
 {
-  "app.Header.title": "le pendu !",
-
-  "app.RestartButton.restartButton": "Recommencer",
+  "app.Header.title": "Le pendu !",
+  "app.Header.restartButton": "Recommencer",
 
   "app.WinOrLose.wordMessage": "Le mot était {word}",
 
+  "app.Start.startMessage": "Faites votre choix",
   "app.Start.instructions": "Choisissez une catégorie ou obtenez un mot au hasard",
   "app.Start.noun": "nom",
   "app.Start.verb": "verbe",
@@ -12,6 +12,7 @@
   "app.Start.adverb": "adverbe",
   "app.Start.random": "hasard",
 
+  "app.Play.playMessage": "Partie en cours",
   "app.Play.counterPlural": "{remainingAttemptsCount} essais restants",
   "app.Play.counterSingular": "{remainingAttemptsCount} essai restant",
 

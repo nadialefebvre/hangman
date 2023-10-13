@@ -1,10 +1,10 @@
 {
-  "app.Header.title": "hänga gubbe!",
-
-  "app.RestartButton.restartButton": "Starta om",
+  "app.Header.title": "Hänga gubbe!",
+  "app.Header.restartButton": "Starta om",
 
   "app.WinOrLose.wordMessage": "Ordet var {word}",
 
+  "app.Start.startMessage": "Gör ditt val",
   "app.Start.instructions": "Välj en kategori eller få ett slumpmässigt ord",
   "app.Start.noun": "substantiv",
   "app.Start.verb": "verb",
@@ -12,6 +12,7 @@
   "app.Start.adverb": "adverb",
   "app.Start.random": "slumpvis",
 
+  "app.Play.playMessage": "Spel på gång",
   "app.Play.counterPlural": "{remainingAttemptsCount} försök kvar",
   "app.Play.counterSingular": "{remainingAttemptsCount} försök kvar",
 

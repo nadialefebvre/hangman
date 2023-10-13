@@ -1,10 +1,10 @@
 {
-  "app.Header.title": "hangman!",
-
-  "app.RestartButton.restartButton": "Restart",
+  "app.Header.title": "Hangman!",
+  "app.Header.restartButton": "Restart",
 
   "app.WinOrLose.wordMessage": "The word was {word}",
 
+  "app.Start.startMessage": "Make your choice",
   "app.Start.instructions": "Choose a category or get a random word",
   "app.Start.noun": "noun",
   "app.Start.verb": "verb",
@@ -12,6 +12,7 @@
   "app.Start.adverb": "adverb",
   "app.Start.random": "random",
 
+  "app.Play.playMessage": "Game in progress",
   "app.Play.counterPlural": "{remainingAttemptsCount} attempts left",
   "app.Play.counterSingular": "{remainingAttemptsCount} attempt left",
 

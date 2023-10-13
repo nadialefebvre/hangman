@@ -15,13 +15,20 @@ const supportedLanguages: string[] = ["en", "fr", "sv"]
 const defaultLanguage: string = "en"
 
 const GlobalStyle = createGlobalStyle`
+  * {
+    font-family: "Press Start 2P", cursive;
+    /* font-family: "VT323", monospace;
+    font-family: "DotGothic16", sans-serif;
+    letter-spacing: 8px; */
+  }
+
   body {
     margin: 0;
   }
 
   button {
-  cursor: pointer;
-}
+    cursor: pointer;
+  }
 `
 const App: React.FC = () => {
   const { state } = useContext(GameContext)
@@ -38,6 +45,7 @@ const App: React.FC = () => {
     (item: LetterItem) => item.guessState === GuessState.Wrong
   )
 
+  // too long, should move OuterWrapper into its own file?
   const steps = [
     { number: 1, rowStart: 1, rowSpan: 1, colStart: 1, colSpan: 4 },
     { number: 2, rowStart: 1, rowSpan: 1, colStart: 5, colSpan: 4 },
@@ -50,55 +58,68 @@ const App: React.FC = () => {
   ]
 
   return (
-    <>
+    <IntlProvider locale={state.language} messages={localeData}>
       <GlobalStyle />
-      <IntlProvider locale={state.language} messages={localeData}>
-        <OuterWrapper hasLost={state.gamePhase === "Lose"}>
-          {state.gamePhase === "Play" &&
-            steps.map((step) => (
-              <Step
-                key={step.number}
-                rowStart={step.rowStart}
-                rowSpan={step.rowSpan}
-                colStart={step.colStart}
-                colSpan={step.colSpan}
-                hasBackground={step.number <= wrongGuesses.length}
-              />
-            ))}
-          <InnerWrapper>
-            <Header wrongGuessesCount={wrongGuesses.length} />
-            {state.gamePhase === "Start" && <Start />}
-            {state.gamePhase === "Play" && <Play />}
-            {state.gamePhase === "Win" && <Win />}
-            {state.gamePhase === "Lose" && <Lose />}
-            <Footer />
-          </InnerWrapper>
-        </OuterWrapper>
-      </IntlProvider>
-    </>
+
+      <OuterWrapper gamePhase={state.gamePhase}>
+        {state.gamePhase === "Play" &&
+          steps.map((step) => (
+            <Step
+              key={step.number}
+              rowStart={step.rowStart}
+              rowSpan={step.rowSpan}
+              colStart={step.colStart}
+              colSpan={step.colSpan}
+              hasBackground={step.number <= wrongGuesses.length}
+            />
+          ))}
+        <InnerWrapper>
+          <Header wrongGuessesCount={wrongGuesses.length} />
+          {state.gamePhase === "Start" && <Start />}
+          {state.gamePhase === "Play" && <Play />}
+          {state.gamePhase === "Win" && <Win />}
+          {state.gamePhase === "Lose" && <Lose />}
+          <Footer />
+        </InnerWrapper>
+      </OuterWrapper>
+    </IntlProvider>
   )
 }
 
 export default App
-
-const OuterWrapper = styled.div<{ hasLost: boolean }>`
+// win et lose sont pareils: à combiner, et mettre background vert si win
+// fix type any
+const OuterWrapper = styled.div<{ gamePhase: any }>`
   display: grid;
   grid-template-columns: 50px repeat(6, 1fr) 50px;
   grid-template-rows: 50px repeat(6, 1fr) 50px;
   width: 100vw;
   height: 100vh;
-  ${({ hasLost }) =>
-    hasLost
+  ${({ gamePhase }) =>
+    gamePhase === "Lose"
       ? css`
           background-color: red;
         `
+      : gamePhase === "Win"
+      ? css`
+          /* background-color: green; */
+          background-image: url("./assets/paper-texture.png");
+          background-image: url("./assets/paper-texture5.png");
+          /* background-image: url("./assets/paper-texture2.jpg"); */
+          /* background-image: url("./assets/paper-texture3.png"); */
+          background-size: cover;
+        `
       : css`
           background-image: url("./assets/paper-texture.png");
+          background-image: url("./assets/paper-texture5.png");
+          /* background-image: url("./assets/paper-texture2.jpg"); */
+          /* background-image: url("./assets/paper-texture3.png"); */
+          /* background-image: url("./assets/paper-texture4.png"); */
           background-size: cover;
         `}
 `
-
 const InnerWrapper = styled.div`
+  margin: 50px;
   grid-row: 2 / span 6;
   grid-column: 2 / span 6;
 `
