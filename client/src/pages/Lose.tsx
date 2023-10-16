@@ -9,11 +9,6 @@ const Lose: React.FC = () => {
   const { formatMessage } = useIntl()
   const { state } = useContext(GameContext)
 
-  const favicon = document.getElementById("favicon")
-  if (favicon instanceof HTMLLinkElement) {
-    favicon.href = "favicon-lose.svg"
-  }
-
   document.title =
     formatMessage(messages.title) + " — " + formatMessage(messages.loseMessage)
 

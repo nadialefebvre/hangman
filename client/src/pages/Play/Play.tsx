@@ -40,13 +40,13 @@ const Play: React.FC = () => {
 
   if (isGameLost) {
     setTimeout(() => {
-      dispatch({ type: "UPDATE_GAME_STATE", payload: "Lose" })
+      dispatch({ type: "UPDATE_GAME_PHASE", payload: "Lose" })
     }, 3000)
   }
 
   if (isGameWon()) {
     setTimeout(() => {
-      dispatch({ type: "UPDATE_GAME_STATE", payload: "Win" })
+      dispatch({ type: "UPDATE_GAME_PHASE", payload: "Win" })
     }, 3000)
   }
 
@@ -68,11 +68,6 @@ const Play: React.FC = () => {
       window.removeEventListener("keydown", handleKeyDown)
     }
   })
-
-  const favicon = document.getElementById("favicon")
-  if (favicon instanceof HTMLLinkElement && wrongGuesses.length > 0) {
-    favicon.href = `favicon-${wrongGuesses.length}.svg`
-  }
 
   document.title =
     formatMessage(messages.title) + " — " + formatMessage(messages.playMessage)

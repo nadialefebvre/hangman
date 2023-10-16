@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import { IntlProvider } from "react-intl"
 import styled, { createGlobalStyle, css } from "styled-components/macro"
 
@@ -10,6 +10,7 @@ import Lose from "./pages/Lose"
 import Play from "./pages/Play/Play"
 import Start from "./pages/Start"
 import Win from "./pages/Win"
+import { buildFaviconContent } from "./utils/buildFaviconContent"
 
 const supportedLanguages: string[] = ["en", "fr", "sv"]
 const defaultLanguage: string = "en"
@@ -56,6 +57,20 @@ const App: React.FC = () => {
     { number: 7, rowStart: 5, rowSpan: 4, colStart: 1, colSpan: 1 },
     { number: 8, rowStart: 1, rowSpan: 4, colStart: 1, colSpan: 1 },
   ]
+
+  let stepToUse = wrongGuesses.length
+  if (state.gamePhase === "Lose" || state.gamePhase === "Win") {
+    stepToUse = 8
+  }
+
+  useEffect(() => {
+    const favicon = document.getElementById("favicon")
+    const svgContent = buildFaviconContent(stepToUse, state.gamePhase)
+
+    if (favicon instanceof HTMLLinkElement) {
+      favicon.href = `data:image/svg+xml,${encodeURIComponent(svgContent)}`
+    }
+  }, [stepToUse, state.gamePhase])
 
   return (
     <IntlProvider locale={state.language} messages={localeData}>

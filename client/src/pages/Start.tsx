@@ -20,7 +20,7 @@ const Start: React.FC = () => {
         throw new Error("Failed to fetch random word")
       }
       const data = await response.json()
-      dispatch({ type: "UPDATE_GAME_STATE", payload: "Play" })
+      dispatch({ type: "UPDATE_GAME_PHASE", payload: "Play" })
       dispatch({ type: "SET_RANDOM_WORD", payload: data })
     } catch (error) {
       console.error("Error fetching random word:", error)
@@ -29,11 +29,6 @@ const Start: React.FC = () => {
 
   document.title =
     formatMessage(messages.title) + " — " + formatMessage(messages.startMessage)
-
-  const favicon = document.getElementById("favicon")
-  if (favicon instanceof HTMLLinkElement) {
-    favicon.href = "favicon.svg"
-  }
 
   return (
     <>
