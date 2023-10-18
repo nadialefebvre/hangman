@@ -20,7 +20,7 @@ const gameReducer: Reducer<GameState, GameAction> = (
   action: GameAction
 ) => {
   switch (action.type) {
-    case "UPDATE_GAME_STATE":
+    case "UPDATE_GAME_PHASE":
       return {
         ...state,
         gamePhase: action.payload,

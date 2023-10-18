@@ -18,7 +18,7 @@ type GameState = {
 
 type GameAction =
   | {
-      type: "UPDATE_GAME_STATE"
+      type: "UPDATE_GAME_PHASE"
       payload: GameState["gamePhase"]
     }
   | {
