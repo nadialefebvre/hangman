@@ -1,12 +1,9 @@
-export const buildFaviconContent = (patate: number, gamePhase: string) => {
+export const buildFaviconContent = (stepToUse: number, gamePhase: string) => {
   let fillColor = "black"
-
-  if (gamePhase === "Lose") {
-    fillColor = "red"
-  }
-
   if (gamePhase === "Win") {
     fillColor = "green"
+  } else if (gamePhase === "Lose") {
+    fillColor = "red"
   }
 
   // gallows
@@ -101,7 +98,7 @@ export const buildFaviconContent = (patate: number, gamePhase: string) => {
     `,
   }
 
-  for (let step = 1; step <= patate; step++) {
+  for (let step = 1; step <= stepToUse; step++) {
     faviconContent += incrementalSVG[step] || ""
   }
 
