@@ -1,8 +1,8 @@
-export const buildFaviconContent = (stepToUse: number, gamePhase: string) => {
+export const buildFaviconContent = (stepToUse: number, result: string) => {
   let fillColor = "black"
-  if (gamePhase === "Win") {
+  if (result === "WIN") {
     fillColor = "green"
-  } else if (gamePhase === "Lose") {
+  } else if (result === "LOSE") {
     fillColor = "red"
   }
 
@@ -44,7 +44,7 @@ export const buildFaviconContent = (stepToUse: number, gamePhase: string) => {
     `,
     // left arm
     3:
-      gamePhase === "Win"
+      result === "WIN"
         ? `
       <path d="M90 40H80V50H90V40Z" fill="${fillColor}"/>
       <path d="M95 50H85V60H95V50Z" fill="${fillColor}"/>
@@ -59,7 +59,7 @@ export const buildFaviconContent = (stepToUse: number, gamePhase: string) => {
     `,
     // right arm
     4:
-      gamePhase === "Win"
+      result === "WIN"
         ? `
       <path d="M175 50H165V60H175V50Z" fill="${fillColor}"/>
       <path d="M180 40H170V50H180V40Z" fill="${fillColor}"/>

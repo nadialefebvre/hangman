@@ -19,7 +19,7 @@ const Header: React.FC<Props> = ({ wrongGuessesCount }) => {
 
   return (
     <header>
-      {state.gamePhase !== "Start" && (
+      {state.phase !== "START" && (
         <RestartIcon
           src="./assets/restart.svg"
           alt={formatMessage(messages.restartButton)}
@@ -27,9 +27,7 @@ const Header: React.FC<Props> = ({ wrongGuessesCount }) => {
           onClick={onRestart}
         />
       )}
-      <Title
-        stop={state.gamePhase === "Play" ? (wrongGuessesCount / 8) * 100 : 0}
-      >
+      <Title stop={state.phase === "PLAY" ? (wrongGuessesCount / 8) * 100 : 0}>
         {formatMessage(messages.title)}
       </Title>
     </header>

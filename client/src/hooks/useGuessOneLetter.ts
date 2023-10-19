@@ -1,27 +1,27 @@
 import { useContext } from "react"
 
 import { GameContext } from "../game/context"
-import { GuessState } from "../game/types"
+import { GuessStatus } from "../game/types"
 import { stringWithoutDiacritics } from "../utils/stringWithoutDiacritics"
 
 const useGuessOneLetter = () => {
   const { state, dispatch } = useContext(GameContext)
 
   const guessOneLetter = (guessedLetter: string) => {
-    let guessState: GuessState
+    let guessStatus: GuessStatus
     if (
       stringWithoutDiacritics(state.randomWord, state.language).includes(
         guessedLetter
       )
     ) {
-      guessState = GuessState.Correct
+      guessStatus = GuessStatus.Correct
     } else {
-      guessState = GuessState.Wrong
+      guessStatus = GuessStatus.Wrong
     }
 
     dispatch({
       type: "GUESS_ONE_LETTER",
-      payload: { letter: guessedLetter, guessState },
+      payload: { character: guessedLetter, guessStatus },
     })
   }
   return { guessOneLetter }

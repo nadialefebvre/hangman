@@ -20,7 +20,7 @@ const Start: React.FC = () => {
         throw new Error("Failed to fetch random word")
       }
       const data = await response.json()
-      dispatch({ type: "UPDATE_GAME_PHASE", payload: "Play" })
+      dispatch({ type: "UPDATE_PHASE", payload: "PLAY" })
       dispatch({ type: "SET_RANDOM_WORD", payload: data })
     } catch (error) {
       console.error("Error fetching random word:", error)

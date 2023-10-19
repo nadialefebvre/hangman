@@ -2,7 +2,7 @@ import { useContext } from "react"
 import { useIntl } from "react-intl"
 
 import { GameContext } from "../game/context"
-import { GuessState, LetterItem } from "../game/types"
+import { GuessStatus, Letter } from "../game/types"
 import messages from "../messages"
 import useGuessOneLetter from "./useGuessOneLetter"
 
@@ -12,10 +12,10 @@ const useHandleKeyDown = () => {
 
   const { guessOneLetter } = useGuessOneLetter()
 
-  const alphabet: LetterItem[] = state.alphabet
+  const alphabet: Letter[] = state.alphabet
 
   const endOfAlphabet: string =
-    alphabet[alphabet.length - 1].letter.toUpperCase()
+    alphabet[alphabet.length - 1].character.toUpperCase()
 
   const isLetter = (key: string): boolean =>
     state.language === "sv" ? /^[a-zåöä]$/.test(key) : /^[a-z]$/.test(key)
@@ -27,17 +27,17 @@ const useHandleKeyDown = () => {
     const key: string = event.key.toLowerCase()
 
     const letterIndex: number = alphabet.findIndex(
-      (item: LetterItem) => item.letter === key
+      (letter: Letter) => letter.character === key
     )
 
     if (isLetter(key)) {
-      if (alphabet[letterIndex].guessState === GuessState.Correct) {
+      if (alphabet[letterIndex].guessStatus === GuessStatus.Correct) {
         alert(
           formatMessage(messages.alertCorrectGuess, {
             letter: key.toUpperCase(),
           })
         )
-      } else if (alphabet[letterIndex].guessState === GuessState.Wrong) {
+      } else if (alphabet[letterIndex].guessStatus === GuessStatus.Wrong) {
         alert(
           formatMessage(messages.alertWrongGuess, { letter: key.toUpperCase() })
         )

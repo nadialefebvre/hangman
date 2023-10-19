@@ -5,11 +5,10 @@ import styled, { createGlobalStyle, css } from "styled-components/macro"
 import Footer from "./components/Footer"
 import Header from "./components/Header"
 import { GameContext } from "./game/context"
-import { GuessState, LetterItem } from "./game/types"
-import Lose from "./pages/Lose"
+import { GuessStatus, Letter } from "./game/types"
 import Play from "./pages/Play/Play"
+import Result from "./pages/Result"
 import Start from "./pages/Start"
-import Win from "./pages/Win"
 import { buildFaviconContent } from "./utils/buildFaviconContent"
 
 const supportedLanguages: string[] = ["en", "fr", "sv"]
@@ -40,10 +39,10 @@ const App: React.FC = () => {
     localeData = require(`./translations/${state.language}.json`)
   }
 
-  const alphabet: LetterItem[] = state.alphabet
+  const alphabet: Letter[] = state.alphabet
 
-  const wrongGuesses: LetterItem[] = alphabet.filter(
-    (item: LetterItem) => item.guessState === GuessState.Wrong
+  const wrongGuesses: Letter[] = alphabet.filter(
+    (item: Letter) => item.guessStatus === GuessStatus.Wrong
   )
 
   // too long, should move OuterWrapper into its own file?
@@ -59,25 +58,24 @@ const App: React.FC = () => {
   ]
 
   let stepToUse = wrongGuesses.length
-  if (state.gamePhase === "Lose" || state.gamePhase === "Win") {
+  if (state.phase === "RESULT") {
     stepToUse = 8
   }
 
   useEffect(() => {
     const favicon = document.getElementById("favicon")
-    const svgContent = buildFaviconContent(stepToUse, state.gamePhase)
+    const svgContent = buildFaviconContent(stepToUse, state.result)
 
     if (favicon instanceof HTMLLinkElement) {
       favicon.href = `data:image/svg+xml,${encodeURIComponent(svgContent)}`
     }
-  }, [stepToUse, state.gamePhase])
+  }, [stepToUse, state.result])
 
   return (
     <IntlProvider locale={state.language} messages={localeData}>
       <GlobalStyle />
-
-      <OuterWrapper gamePhase={state.gamePhase}>
-        {state.gamePhase === "Play" &&
+      <OuterWrapper result={state.result} phase={state.phase}>
+        {state.phase === "PLAY" &&
           steps.map((step) => (
             <Step
               key={step.number}
@@ -90,10 +88,9 @@ const App: React.FC = () => {
           ))}
         <InnerWrapper>
           <Header wrongGuessesCount={wrongGuesses.length} />
-          {state.gamePhase === "Start" && <Start />}
-          {state.gamePhase === "Play" && <Play />}
-          {state.gamePhase === "Win" && <Win />}
-          {state.gamePhase === "Lose" && <Lose />}
+          {state.phase === "START" && <Start />}
+          {state.phase === "PLAY" && <Play />}
+          {state.phase === "RESULT" && <Result />}
           <Footer />
         </InnerWrapper>
       </OuterWrapper>
@@ -102,34 +99,25 @@ const App: React.FC = () => {
 }
 
 export default App
-// win et lose sont pareils: à combiner, et mettre background vert si win
-// fix type any
-const OuterWrapper = styled.div<{ gamePhase: any }>`
+
+const OuterWrapper = styled.div<{ result: string; phase: string }>`
   display: grid;
   grid-template-columns: 50px repeat(6, 1fr) 50px;
   grid-template-rows: 50px repeat(6, 1fr) 50px;
   width: 100vw;
   height: 100vh;
-  ${({ gamePhase }) =>
-    gamePhase === "Lose"
+  ${({ result, phase }) =>
+    result === "LOSE" && phase === "RESULT"
       ? css`
           background-color: red;
         `
-      : gamePhase === "Win"
+      : result === "WIN" && phase === "RESULT"
       ? css`
-          /* background-color: green; */
-          background-image: url("./assets/paper-texture.png");
-          background-image: url("./assets/paper-texture5.png");
-          /* background-image: url("./assets/paper-texture2.jpg"); */
-          /* background-image: url("./assets/paper-texture3.png"); */
+          background-image: url("./assets/paper-texture2.jpg");
           background-size: cover;
         `
       : css`
           background-image: url("./assets/paper-texture.png");
-          background-image: url("./assets/paper-texture5.png");
-          /* background-image: url("./assets/paper-texture2.jpg"); */
-          /* background-image: url("./assets/paper-texture3.png"); */
-          /* background-image: url("./assets/paper-texture4.png"); */
           background-size: cover;
         `}
 `

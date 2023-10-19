@@ -2,32 +2,25 @@ import React, { useContext } from "react"
 import styled from "styled-components/macro"
 
 import { GameContext } from "../../../game/context"
-import { LetterItem } from "../../../game/types"
+import { Letter } from "../../../game/types"
 import LetterButton from "../components/LetterButton"
 
-interface LetterButtonsContainerProps {
-  isEndOfGame: boolean
-}
-
-const LetterButtonsContainer: React.FC<LetterButtonsContainerProps> = ({
-  isEndOfGame,
-}) => {
+const LetterButtonsContainer: React.FC = () => {
   const { state } = useContext(GameContext)
 
-  const alphabet: LetterItem[] = state.alphabet
+  const alphabet: Letter[] = state.alphabet
 
-  const guessState = (letter: LetterItem) => {
-    return alphabet.find((item) => item === letter)?.guessState
+  const guessStatus = (letter: Letter) => {
+    return alphabet.find((item) => item === letter)?.guessStatus
   }
 
   return (
     <LettersContainer>
-      {alphabet.map((item: LetterItem) => (
+      {alphabet.map((letter: Letter) => (
         <LetterButton
-          key={item.letter}
-          letter={item.letter}
-          isEndOfGame={isEndOfGame}
-          guessState={guessState(item)}
+          key={letter.character}
+          letter={letter.character}
+          guessStatus={guessStatus(letter)}
         />
       ))}
     </LettersContainer>

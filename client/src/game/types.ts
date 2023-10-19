@@ -1,32 +1,37 @@
-enum GuessState {
+enum GuessStatus {
   Pending = "PENDING",
   Correct = "CORRECT",
   Wrong = "WRONG",
 }
 
-interface LetterItem {
-  letter: string
-  guessState: GuessState
+interface Letter {
+  character: string
+  guessStatus: GuessStatus
 }
 
 type GameState = {
   language: string
-  gamePhase: "Start" | "Play" | "Win" | "Lose"
+  phase: "START" | "PLAY" | "RESULT"
   randomWord: string
-  alphabet: LetterItem[]
+  alphabet: Letter[]
+  result: "PENDING" | "WIN" | "LOSE"
 }
 
 type GameAction =
   | {
-      type: "UPDATE_GAME_PHASE"
-      payload: GameState["gamePhase"]
+      type: "UPDATE_PHASE"
+      payload: GameState["phase"]
+    }
+  | {
+      type: "UPDATE_RESULT"
+      payload: GameState["result"]
     }
   | {
       type: "SET_RANDOM_WORD"
       payload: GameState["randomWord"]
     }
   | { type: "RESET_GAME" }
-  | { type: "GUESS_ONE_LETTER"; payload: LetterItem }
+  | { type: "GUESS_ONE_LETTER"; payload: Letter }
 
-export { GuessState }
-export type { GameAction, GameState, LetterItem }
+export { GuessStatus }
+export type { GameAction, GameState, Letter }

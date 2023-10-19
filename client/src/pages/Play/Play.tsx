@@ -1,8 +1,8 @@
-import React, { useContext, useEffect } from "react"
+import React, { useCallback, useContext, useEffect } from "react"
 import { useIntl } from "react-intl"
 
 import { GameContext } from "../../game/context"
-import { GuessState, LetterItem } from "../../game/types"
+import { GuessStatus, Letter } from "../../game/types"
 import useHandleKeyDown from "../../hooks/useHandleKeyDown"
 import messages from "../../messages"
 import { stringWithoutDiacritics } from "../../utils/stringWithoutDiacritics"
@@ -12,43 +12,41 @@ import Word from "./components/Word"
 
 const Play: React.FC = () => {
   const { formatMessage } = useIntl()
-
   const { state, dispatch } = useContext(GameContext)
-
   const { handleKeyDown } = useHandleKeyDown()
 
   const word: string = stringWithoutDiacritics(state.randomWord, state.language)
-
-  const alphabet: LetterItem[] = state.alphabet
-
-  const wrongGuesses: LetterItem[] = alphabet.filter(
-    (item: LetterItem) => item.guessState === GuessState.Wrong
+  const alphabet: Letter[] = state.alphabet
+  const wrongGuesses: Letter[] = alphabet.filter(
+    (letter: Letter) => letter.guessStatus === GuessStatus.Wrong
   )
   const remainingAttemptsCount: number = 8 - wrongGuesses.length
 
-  const isGameLost: boolean = remainingAttemptsCount === 0
-
-  const isGameWon = (): boolean => {
+  const isGameWon = useCallback((): boolean => {
     return word.split("").every((wordLetter) => {
       return alphabet.find(
         (letter) =>
-          letter.letter === wordLetter &&
-          letter.guessState === GuessState.Correct
+          letter.character === wordLetter &&
+          letter.guessStatus === GuessStatus.Correct
       )
     })
-  }
+  }, [alphabet, word])
 
-  if (isGameLost) {
-    setTimeout(() => {
-      dispatch({ type: "UPDATE_GAME_PHASE", payload: "Lose" })
-    }, 3000)
-  }
+  const isGameLost: boolean = remainingAttemptsCount === 0
 
-  if (isGameWon()) {
-    setTimeout(() => {
-      dispatch({ type: "UPDATE_GAME_PHASE", payload: "Win" })
-    }, 3000)
-  }
+  useEffect(() => {
+    // issue without timeout: should be solved now
+    if (isGameWon() || isGameLost) {
+      if (isGameWon()) {
+        dispatch({ type: "UPDATE_RESULT", payload: "WIN" })
+      } else if (isGameLost) {
+        dispatch({ type: "UPDATE_RESULT", payload: "LOSE" })
+      }
+      setTimeout(() => {
+        dispatch({ type: "UPDATE_PHASE", payload: "RESULT" })
+      }, 3000)
+    }
+  }, [isGameLost, isGameWon, dispatch])
 
   useEffect(() => {
     // Issue only with Firefox
@@ -77,7 +75,7 @@ const Play: React.FC = () => {
   return (
     <>
       <Counter remainingAttemptsCount={remainingAttemptsCount} />
-      <LetterButtonsContainer isEndOfGame={isGameLost || isGameWon()} />
+      <LetterButtonsContainer />
       <Word />
     </>
   )

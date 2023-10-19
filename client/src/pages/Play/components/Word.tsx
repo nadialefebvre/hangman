@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import styled from "styled-components/macro"
 
 import { GameContext } from "../../../game/context"
-import { GuessState, LetterItem } from "../../../game/types"
+import { GuessStatus, Letter } from "../../../game/types"
 import { stringWithoutDiacritics } from "../../../utils/stringWithoutDiacritics"
 
 const Word: React.FC = () => {
@@ -10,14 +10,14 @@ const Word: React.FC = () => {
 
   const wordLetters: string[] = Array.from(state.randomWord)
 
-  const alphabet: LetterItem[] = state.alphabet
+  const alphabet: Letter[] = state.alphabet
 
-  const isACorrectGuess = (letter: string): boolean => {
+  const isACorrectGuess = (wordLetter: string): boolean => {
     const letterIndex: number = alphabet.findIndex(
-      (item: LetterItem) =>
-        item.letter === stringWithoutDiacritics(letter, state.language)
+      (letter: Letter) =>
+        letter.character === stringWithoutDiacritics(wordLetter, state.language)
     )
-    return alphabet[letterIndex].guessState === GuessState.Correct
+    return alphabet[letterIndex].guessStatus === GuessStatus.Correct
   }
 
   return (

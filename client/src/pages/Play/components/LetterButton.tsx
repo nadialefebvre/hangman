@@ -2,31 +2,28 @@ import React, { useContext } from "react"
 import styled from "styled-components/macro"
 
 import { GameContext } from "../../../game/context"
-import { GuessState } from "../../../game/types"
+import { GuessStatus } from "../../../game/types"
 import useGuessOneLetter from "../../../hooks/useGuessOneLetter"
 
 interface LetterButtonProps {
   letter: string
-  isEndOfGame: boolean
-  guessState: GuessState | undefined
+  guessStatus: GuessStatus | undefined
 }
 
-const LetterButton: React.FC<LetterButtonProps> = ({
-  letter,
-  isEndOfGame,
-  guessState,
-}) => {
+const LetterButton: React.FC<LetterButtonProps> = ({ letter, guessStatus }) => {
   const { guessOneLetter } = useGuessOneLetter()
 
   const { state } = useContext(GameContext)
 
+  const isEndOfGame = state.result === "WIN" || state.result === "LOSE"
+
   return (
     <LetterButtonStyled
       isSwedishKeyboard={state.language === "sv"}
-      disabled={guessState !== "PENDING" || isEndOfGame}
+      disabled={guessStatus !== GuessStatus.Pending || isEndOfGame}
       onClick={() => guessOneLetter(letter)}
       isEndOfGame={isEndOfGame}
-      guessState={guessState}
+      guessStatus={guessStatus}
     >
       <span>{letter}</span>
     </LetterButtonStyled>
@@ -38,7 +35,7 @@ export default LetterButton
 interface LetterButtonStyledProps {
   isSwedishKeyboard: boolean
   isEndOfGame: boolean
-  guessState: GuessState | undefined
+  guessStatus: GuessStatus | undefined
 }
 
 const LetterButtonStyled = styled.button<LetterButtonStyledProps>`
@@ -53,13 +50,15 @@ const LetterButtonStyled = styled.button<LetterButtonStyledProps>`
   align-items: center;
 
   :disabled {
-    background: ${({ guessState }) =>
-      guessState === "CORRECT"
+    background: ${({ guessStatus }) =>
+      guessStatus === GuessStatus.Correct
         ? "rgba(0, 128, 0, 0.1)"
         : "rgba(255, 0, 0, 0.1)"};
 
-    background: ${({ guessState, isEndOfGame }) =>
-      guessState === "PENDING" && isEndOfGame && "rgba(54, 54, 54, 0.1)"};
+    background: ${({ guessStatus, isEndOfGame }) =>
+      guessStatus === GuessStatus.Pending &&
+      isEndOfGame &&
+      "rgba(54, 54, 54, 0.1)"};
     cursor: not-allowed;
   }
 
