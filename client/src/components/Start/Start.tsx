@@ -2,9 +2,9 @@ import React, { useContext } from "react"
 import { useIntl } from "react-intl"
 import styled from "styled-components/macro"
 
-import { GameContext } from "../game/context"
-import messages from "../messages"
-import { API_URL } from "../utils/urls"
+import { GameContext } from "../../game/context"
+import { API_URL } from "../../utils/urls"
+import messages from "./messages"
 
 const Start: React.FC = () => {
   const { state, dispatch } = useContext(GameContext)
@@ -27,8 +27,8 @@ const Start: React.FC = () => {
     }
   }
 
-  document.title =
-    formatMessage(messages.title) + " — " + formatMessage(messages.startMessage)
+  // document.title =
+  //   formatMessage(messages.title) + " — " + formatMessage(messages.startMessage)
 
   return (
     <>

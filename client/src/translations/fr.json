@@ -1,24 +1,24 @@
 {
-  "app.Header.title": "Le pendu !",
-  "app.Header.restartButton": "Recommencer",
+  "components.Footer.text": "par Nadia Lefebvre",
 
-  "app.WinOrLose.wordMessage": "Le mot était {word}",
+  "components.Header.title": "Le pendu !",
+  "components.Header.restartButton": "Recommencer",
 
-  "app.Start.startMessage": "Faites votre choix",
-  "app.Start.instructions": "Choisissez une catégorie ou obtenez un mot au hasard",
-  "app.Start.noun": "nom",
-  "app.Start.verb": "verbe",
-  "app.Start.adjective": "adjectif",
-  "app.Start.adverb": "adverbe",
-  "app.Start.random": "hasard",
+  "components.Play.counterPlural": "{remainingAttemptsCount} essais restants",
+  "components.Play.counterSingular": "{remainingAttemptsCount} essai restant",
+  "components.Play.playMessage": "Partie en cours",
 
-  "app.Play.playMessage": "Partie en cours",
-  "app.Play.counterPlural": "{remainingAttemptsCount} essais restants",
-  "app.Play.counterSingular": "{remainingAttemptsCount} essai restant",
+  "components.Result.loseMessage": "Vous avez perdu !",
+  "components.Result.winMessage": "Vous avez gagné !",
+  "components.Result.wordMessage": "Le mot était {word}",
 
-  "app.Win.winMessage": "Vous avez gagné !",
-
-  "app.Lose.loseMessage": "Vous avez perdu !",
+  "components.Start.startMessage": "Faites votre choix",
+  "components.Start.instructions": "Choisissez une catégorie ou obtenez un mot au hasard",
+  "components.Start.noun": "nom",
+  "components.Start.verb": "verbe",
+  "components.Start.adjective": "adjectif",
+  "components.Start.adverb": "adverbe",
+  "components.Start.random": "hasard",
 
   "app.alertNotALetter": "Seules les lettres de A à {endOfAlphabet} sont autorisées.",
   "app.alertCorrectGuess": "Vous avez déjà BIEN deviné la lettre {letter}.",

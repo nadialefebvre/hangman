@@ -1,24 +1,24 @@
 {
-  "app.Header.title": "Hänga gubbe!",
-  "app.Header.restartButton": "Starta om",
+  "components.Footer.text": "av Nadia Lefebvre",
 
-  "app.WinOrLose.wordMessage": "Ordet var {word}",
+  "components.Header.title": "Hänga gubbe!",
+  "components.Header.restartButton": "Starta om",
 
-  "app.Start.startMessage": "Gör ditt val",
-  "app.Start.instructions": "Välj en kategori eller få ett slumpmässigt ord",
-  "app.Start.noun": "substantiv",
-  "app.Start.verb": "verb",
-  "app.Start.adjective": "adjektiv",
-  "app.Start.adverb": "adverb",
-  "app.Start.random": "slumpvis",
+  "components.Play.counterPlural": "{remainingAttemptsCount} försök kvar",
+  "components.Play.counterSingular": "{remainingAttemptsCount} försök kvar",
+  "components.Play.playMessage": "Spel på gång",
 
-  "app.Play.playMessage": "Spel på gång",
-  "app.Play.counterPlural": "{remainingAttemptsCount} försök kvar",
-  "app.Play.counterSingular": "{remainingAttemptsCount} försök kvar",
+  "components.Result.loseMessage": "Du förlorade!",
+  "components.Result.winMessage": "Du vann!",
+  "components.Result.wordMessage": "Ordet var {word}",
 
-  "app.Win.winMessage": "Du vann!",
-
-  "app.Lose.loseMessage": "Du förlorade!",
+  "components.Start.startMessage": "Gör ditt val",
+  "components.Start.instructions": "Välj en kategori eller få ett slumpmässigt ord",
+  "components.Start.noun": "substantiv",
+  "components.Start.verb": "verb",
+  "components.Start.adjective": "adjektiv",
+  "components.Start.adverb": "adverb",
+  "components.Start.random": "slumpvis",
 
   "app.alertNotALetter": "Endast bokstäver från A till {endOfAlphabet} är tillåtna.",
   "app.alertCorrectGuess": "Du har redan gissat BRA på bokstaven {letter}.",

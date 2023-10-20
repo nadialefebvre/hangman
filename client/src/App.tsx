@@ -4,11 +4,11 @@ import styled, { createGlobalStyle, css } from "styled-components/macro"
 
 import Footer from "./components/Footer"
 import Header from "./components/Header"
+import Play from "./components/Play"
+import Result from "./components/Result"
+import Start from "./components/Start/"
 import { GameContext } from "./game/context"
 import { GuessStatus, Letter } from "./game/types"
-import Play from "./pages/Play/Play"
-import Result from "./pages/Result"
-import Start from "./pages/Start"
 import { buildFaviconContent } from "./utils/buildFaviconContent"
 
 const supportedLanguages: string[] = ["en", "fr", "sv"]

@@ -4,11 +4,11 @@ import { useIntl } from "react-intl"
 import { GameContext } from "../../game/context"
 import { GuessStatus, Letter } from "../../game/types"
 import useHandleKeyDown from "../../hooks/useHandleKeyDown"
-import messages from "../../messages"
 import { stringWithoutDiacritics } from "../../utils/stringWithoutDiacritics"
-import Counter from "./components/Counter"
-import LetterButtonsContainer from "./components/LetterButtonsContainer"
-import Word from "./components/Word"
+import Counter from "./Counter"
+import LetterButtonsContainer from "./LetterButtonsContainer"
+import Word from "./Word"
+import messages from "./messages"
 
 const Play: React.FC = () => {
   const { formatMessage } = useIntl()
@@ -67,8 +67,9 @@ const Play: React.FC = () => {
     }
   })
 
-  document.title =
-    formatMessage(messages.title) + " — " + formatMessage(messages.playMessage)
+  // maybe create a custom hook to render the document.title NEED TO CHECK!
+  // document.title =
+  //   formatMessage(messages.title) + " — " + formatMessage(messages.playMessage)
 
   // add this to some instructions in Play: "Press ENTER or ESC to escape the game"
 

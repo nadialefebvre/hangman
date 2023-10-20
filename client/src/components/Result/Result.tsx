@@ -2,23 +2,23 @@ import React, { useContext } from "react"
 import { useIntl } from "react-intl"
 import styled from "styled-components/macro"
 
-import { GameContext } from "../game/context"
-import messages from "../messages"
+import { GameContext } from "../../game/context"
 import ConfettisAnimation from "./ConfettisAnimation"
+import messages from "./messages"
 
 const Result: React.FC = () => {
   const { state } = useContext(GameContext)
   const { formatMessage } = useIntl()
 
-  if (state.result === "WIN") {
-    document.title =
-      formatMessage(messages.title) + " — " + formatMessage(messages.winMessage)
-  } else if (state.result === "LOSE") {
-    document.title =
-      formatMessage(messages.title) +
-      " — " +
-      formatMessage(messages.loseMessage)
-  }
+  // if (state.result === "WIN") {
+  //   document.title =
+  //     formatMessage(messages.title) + " — " + formatMessage(messages.winMessage)
+  // } else if (state.result === "LOSE") {
+  //   document.title =
+  //     formatMessage(messages.title) +
+  //     " — " +
+  //     formatMessage(messages.loseMessage)
+  // }
 
   return (
     <>

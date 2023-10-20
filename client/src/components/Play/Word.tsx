@@ -1,9 +1,9 @@
 import React, { useContext } from "react"
 import styled from "styled-components/macro"
 
-import { GameContext } from "../../../game/context"
-import { GuessStatus, Letter } from "../../../game/types"
-import { stringWithoutDiacritics } from "../../../utils/stringWithoutDiacritics"
+import { GameContext } from "../../game/context"
+import { GuessStatus, Letter } from "../../game/types"
+import { stringWithoutDiacritics } from "../../utils/stringWithoutDiacritics"
 
 const Word: React.FC = () => {
   const { state } = useContext(GameContext)

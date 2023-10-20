@@ -2,8 +2,8 @@ import React, { useContext } from "react"
 import { useIntl } from "react-intl"
 import styled from "styled-components/macro"
 
-import { GameContext } from "../game/context"
-import messages from "../messages"
+import { GameContext } from "../../game/context"
+import messages from "./messages"
 
 interface Props {
   wrongGuessesCount: number

@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components/macro"
 
 import { useIntl } from "react-intl"
-import messages from "../../../messages"
+import messages from "./messages"
 
 interface CounterProps {
   remainingAttemptsCount: number

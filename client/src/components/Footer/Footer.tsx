@@ -1,10 +1,15 @@
 import React from "react"
+import { useIntl } from "react-intl"
 import styled from "styled-components"
 
+import messages from "./messages"
+
 const Footer: React.FC = () => {
+  const { formatMessage } = useIntl()
+
   return (
     <StyledFooter>
-      <h2>Made by me</h2>
+      <h2>{formatMessage(messages.text)}</h2>
     </StyledFooter>
   )
 }

@@ -1,9 +1,9 @@
 import React, { useContext } from "react"
 import styled from "styled-components/macro"
 
-import { GameContext } from "../../../game/context"
-import { Letter } from "../../../game/types"
-import LetterButton from "../components/LetterButton"
+import { GameContext } from "../../game/context"
+import { Letter } from "../../game/types"
+import LetterButton from "./LetterButton"
 
 const LetterButtonsContainer: React.FC = () => {
   const { state } = useContext(GameContext)
