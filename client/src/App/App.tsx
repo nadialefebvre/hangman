@@ -11,7 +11,7 @@ import { GameContext } from "../game/context"
 import { GuessStatus } from "../game/types"
 import { updateFavicon } from "../utils/favicon"
 import { getLocaleData } from "../utils/translation"
-import { GlobalStyle } from "./GlobalStyle"
+import GlobalStyle from "./GlobalStyle"
 
 const App: React.FC = () => {
   const { state } = useContext(GameContext)

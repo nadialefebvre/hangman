@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components/macro"
 
-export const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
   * {
     font-family: "Press Start 2P", cursive;
     /* font-family: "VT323", monospace;
@@ -16,3 +16,4 @@ export const GlobalStyle = createGlobalStyle`
     cursor: pointer;
   }
 `
+export default GlobalStyle
