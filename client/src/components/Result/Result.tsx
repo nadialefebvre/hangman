@@ -3,7 +3,7 @@ import { useIntl } from "react-intl"
 import styled from "styled-components/macro"
 
 import { GameContext } from "../../game/context"
-import { useSetDocumentTitle } from "../../hooks/useSetDocumentTitle"
+import useSetDocumentTitle from "../../hooks/useSetDocumentTitle"
 import ConfettisAnimation from "./ConfettisAnimation"
 import messages from "./messages"
 

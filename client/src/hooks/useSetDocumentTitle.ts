@@ -3,7 +3,7 @@ import { useIntl } from "react-intl"
 
 import messages from "../messages"
 
-export const useSetDocumentTitle = (message: string) => {
+const useSetDocumentTitle = (message: string) => {
   const { formatMessage } = useIntl()
 
   useEffect(() => {
@@ -11,13 +11,15 @@ export const useSetDocumentTitle = (message: string) => {
   }, [formatMessage, message])
 }
 
+export default useSetDocumentTitle
+
 // import { useContext, useEffect } from "react"
 // import { useIntl } from "react-intl"
 
 // import { GameContext } from "../game/context"
 // import messages from "../messages"
 
-// export const useSetDocumentTitle = () => {
+// const useSetDocumentTitle = () => {
 //   const { state } = useContext(GameContext)
 //   const { phase } = state
 //   const { formatMessage } = useIntl()
@@ -40,3 +42,5 @@ export const useSetDocumentTitle = (message: string) => {
 //     document.title = formatMessage(messages.title) + " — " + message
 //   }, [formatMessage, message])
 // }
+
+// export default useSetDocumentTitle
