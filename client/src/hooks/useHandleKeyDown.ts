@@ -8,17 +8,16 @@ import useGuessOneLetter from "./useGuessOneLetter"
 
 const useHandleKeyDown = () => {
   const { state, dispatch } = useContext(GameContext)
+  const { language, alphabet } = state
   const { formatMessage } = useIntl()
 
   const { guessOneLetter } = useGuessOneLetter()
-
-  const alphabet: Letter[] = state.alphabet
 
   const endOfAlphabet: string =
     alphabet[alphabet.length - 1].character.toUpperCase()
 
   const isLetter = (key: string): boolean =>
-    state.language === "sv" ? /^[a-zåöä]$/.test(key) : /^[a-z]$/.test(key)
+    language === "sv" ? /^[a-zåöä]$/.test(key) : /^[a-z]$/.test(key)
 
   const isRestartKeyPressed = (key: string): boolean =>
     key === "enter" || key === "escape"

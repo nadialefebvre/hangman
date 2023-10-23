@@ -6,14 +6,11 @@ import { stringWithoutDiacritics } from "../utils/stringWithoutDiacritics"
 
 const useGuessOneLetter = () => {
   const { state, dispatch } = useContext(GameContext)
+  const { language, randomWord } = state
 
   const guessOneLetter = (guessedLetter: string) => {
     let guessStatus: GuessStatus
-    if (
-      stringWithoutDiacritics(state.randomWord, state.language).includes(
-        guessedLetter
-      )
-    ) {
+    if (stringWithoutDiacritics(randomWord, language).includes(guessedLetter)) {
       guessStatus = GuessStatus.Correct
     } else {
       guessStatus = GuessStatus.Wrong

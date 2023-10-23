@@ -9,27 +9,28 @@ import messages from "./messages"
 
 const Result: React.FC = () => {
   const { state } = useContext(GameContext)
+  const { randomWord, result } = state
   const { formatMessage } = useIntl()
 
   let message: string = ""
-  if (state.result === "WIN") {
+  if (result === "WIN") {
     message = formatMessage(messages.winMessage)
-  } else if (state.result === "LOSE") {
+  } else if (result === "LOSE") {
     message = formatMessage(messages.loseMessage)
   }
   useSetDocumentTitle(message)
 
   return (
     <>
-      {state.result === "WIN" && <ConfettisAnimation />}
-      {state.result === "WIN" ? (
+      {result === "WIN" && <ConfettisAnimation />}
+      {result === "WIN" ? (
         <StyledText>{formatMessage(messages.winMessage)}</StyledText>
       ) : (
         <StyledText>{formatMessage(messages.loseMessage)}</StyledText>
       )}
       <StyledText>
         {formatMessage(messages.wordMessage, {
-          word: <StyledTextBig>{state.randomWord.toUpperCase()}</StyledTextBig>,
+          word: <StyledTextBig>{randomWord.toUpperCase()}</StyledTextBig>,
         })}
       </StyledText>
     </>

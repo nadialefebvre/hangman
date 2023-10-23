@@ -7,8 +7,7 @@ import LetterButton from "./LetterButton"
 
 const LetterButtonsContainer: React.FC = () => {
   const { state } = useContext(GameContext)
-
-  const alphabet: Letter[] = state.alphabet
+  const { alphabet } = state
 
   const guessStatus = (letter: Letter) => {
     return alphabet.find((item) => item === letter)?.guessStatus

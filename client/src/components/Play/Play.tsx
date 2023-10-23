@@ -14,16 +14,16 @@ import messages from "./messages"
 const Play: React.FC = () => {
   const { formatMessage } = useIntl()
   const { state, dispatch } = useContext(GameContext)
+  const { language, randomWord, alphabet } = state
   const { handleKeyDown } = useHandleKeyDown()
 
   useSetDocumentTitle(formatMessage(messages.playMessage))
 
-  const word: string = stringWithoutDiacritics(state.randomWord, state.language)
-  const alphabet: Letter[] = state.alphabet
-  const wrongGuesses: Letter[] = alphabet.filter(
+  const word: string = stringWithoutDiacritics(randomWord, language)
+  const wrongGuessesCount: number = alphabet.filter(
     (letter: Letter) => letter.guessStatus === GuessStatus.Wrong
-  )
-  const remainingAttemptsCount: number = 8 - wrongGuesses.length
+  ).length
+  const remainingAttemptsCount: number = 8 - wrongGuessesCount
 
   const isGameWon = useCallback((): boolean => {
     return word.split("").every((wordLetter) => {

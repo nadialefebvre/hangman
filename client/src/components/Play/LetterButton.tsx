@@ -12,14 +12,14 @@ interface LetterButtonProps {
 
 const LetterButton: React.FC<LetterButtonProps> = ({ letter, guessStatus }) => {
   const { guessOneLetter } = useGuessOneLetter()
-
   const { state } = useContext(GameContext)
+  const { result, language } = state
 
-  const isEndOfGame = state.result === "WIN" || state.result === "LOSE"
+  const isEndOfGame = result === "WIN" || result === "LOSE"
 
   return (
     <LetterButtonStyled
-      isSwedishKeyboard={state.language === "sv"}
+      isSwedishKeyboard={language === "sv"}
       disabled={guessStatus !== GuessStatus.Pending || isEndOfGame}
       onClick={() => guessOneLetter(letter)}
       isEndOfGame={isEndOfGame}

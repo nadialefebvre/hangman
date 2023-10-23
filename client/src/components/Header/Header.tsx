@@ -11,6 +11,7 @@ interface Props {
 
 const Header: React.FC<Props> = ({ wrongGuessesCount }) => {
   const { state, dispatch } = useContext(GameContext)
+  const { phase } = state
   const { formatMessage } = useIntl()
 
   const onRestart = (): void => {
@@ -19,7 +20,7 @@ const Header: React.FC<Props> = ({ wrongGuessesCount }) => {
 
   return (
     <header>
-      {state.phase !== "START" && (
+      {phase !== "START" && (
         <RestartIcon
           src="./assets/restart.svg"
           alt={formatMessage(messages.restartButton)}
@@ -27,7 +28,7 @@ const Header: React.FC<Props> = ({ wrongGuessesCount }) => {
           onClick={onRestart}
         />
       )}
-      <Title stop={state.phase === "PLAY" ? (wrongGuessesCount / 8) * 100 : 0}>
+      <Title stop={phase === "PLAY" ? (wrongGuessesCount / 8) * 100 : 0}>
         {formatMessage(messages.title)}
       </Title>
     </header>

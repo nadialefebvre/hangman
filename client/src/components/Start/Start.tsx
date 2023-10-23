@@ -9,7 +9,7 @@ import messages from "./messages"
 
 const Start: React.FC = () => {
   const { state, dispatch } = useContext(GameContext)
-
+  const { language } = state
   const { formatMessage } = useIntl()
 
   useSetDocumentTitle(formatMessage(messages.startMessage))
@@ -37,7 +37,7 @@ const Start: React.FC = () => {
         {categories.map((category: string) => (
           <Button
             key={category}
-            onClick={() => fetchRandomWord(category, state.language)}
+            onClick={() => fetchRandomWord(category, language)}
           >
             {formatMessage(messages[category as keyof typeof messages])}
           </Button>

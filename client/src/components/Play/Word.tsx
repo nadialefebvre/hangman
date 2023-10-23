@@ -7,15 +7,14 @@ import { stringWithoutDiacritics } from "../../utils/stringWithoutDiacritics"
 
 const Word: React.FC = () => {
   const { state } = useContext(GameContext)
+  const { language, randomWord, alphabet } = state
 
-  const wordLetters: string[] = Array.from(state.randomWord)
-
-  const alphabet: Letter[] = state.alphabet
+  const wordLetters: string[] = Array.from(randomWord)
 
   const isACorrectGuess = (wordLetter: string): boolean => {
     const letterIndex: number = alphabet.findIndex(
       (letter: Letter) =>
-        letter.character === stringWithoutDiacritics(wordLetter, state.language)
+        letter.character === stringWithoutDiacritics(wordLetter, language)
     )
     return alphabet[letterIndex].guessStatus === GuessStatus.Correct
   }

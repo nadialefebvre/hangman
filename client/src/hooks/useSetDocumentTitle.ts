@@ -19,18 +19,19 @@ export const useSetDocumentTitle = (message: string) => {
 
 // export const useSetDocumentTitle = () => {
 //   const { state } = useContext(GameContext)
+//   const { phase } = state
 //   const { formatMessage } = useIntl()
 
 //   let message: string = ""
 
-//   if (state.phase === "START") {
+//   if (phase === "START") {
 //     message = formatMessage(messages.subtitleStart)
-//   } else if (state.phase === "PLAY") {
+//   } else if (phase === "PLAY") {
 //     message = formatMessage(messages.subtitlePlay)
-//   } else if (state.phase === "RESULT") {
-//     if (state.result === "WIN") {
+//   } else if (phase === "RESULT") {
+//     if (result === "WIN") {
 //       message = formatMessage(messages.subtitleResultWin)
-//     } else if (state.result === "LOSE") {
+//     } else if (result === "LOSE") {
 //       message = formatMessage(messages.subtitleResultLose)
 //     }
 //   }
