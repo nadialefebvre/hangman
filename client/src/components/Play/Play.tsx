@@ -20,10 +20,10 @@ const Play: React.FC = () => {
   useSetDocumentTitle(formatMessage(messages.playMessage))
 
   const word: string = stringWithoutDiacritics(randomWord, language)
-  const wrongGuessesCount: number = alphabet.filter(
+  const wrongCount: number = alphabet.filter(
     (letter: Letter) => letter.guessStatus === GuessStatus.Wrong
   ).length
-  const remainingAttemptsCount: number = 8 - wrongGuessesCount
+  const remainingAttempts: number = 8 - wrongCount
 
   const isGameWon = useCallback((): boolean => {
     return word.split("").every((wordLetter) => {
@@ -35,7 +35,7 @@ const Play: React.FC = () => {
     })
   }, [alphabet, word])
 
-  const isGameLost: boolean = remainingAttemptsCount === 0
+  const isGameLost: boolean = remainingAttempts === 0
 
   useEffect(() => {
     // issue without timeout: should be solved now
@@ -72,7 +72,7 @@ const Play: React.FC = () => {
 
   return (
     <>
-      <Counter remainingAttemptsCount={remainingAttemptsCount} />
+      <Counter remainingAttempts={remainingAttempts} />
       <LetterButtonsContainer />
       <Word />
     </>

@@ -9,10 +9,10 @@ export default defineMessages({
   },
   counterPlural: {
     id: `${scope}.counterPlural`,
-    defaultMessage: "{remainingAttemptsCount} attempts left",
+    defaultMessage: "{remainingAttempts} attempts left",
   },
   counterSingular: {
     id: `${scope}.counterSingular`,
-    defaultMessage: "{remainingAttemptsCount} attempt left",
+    defaultMessage: "{remainingAttempts} attempt left",
   },
 })

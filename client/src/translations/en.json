@@ -6,8 +6,8 @@
   "components.Header.title": "Hangman!",
   "components.Header.restartButton": "Restart",
 
-  "components.Play.counterPlural": "{remainingAttemptsCount} attempts left",
-  "components.Play.counterSingular": "{remainingAttemptsCount} attempt left",
+  "components.Play.counterPlural": "{remainingAttempts} attempts left",
+  "components.Play.counterSingular": "{remainingAttempts} attempt left",
   "components.Play.playMessage": "Game in progress",
 
   "components.Result.loseMessage": "You lost!",

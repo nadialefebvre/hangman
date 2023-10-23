@@ -6,8 +6,8 @@
   "components.Header.title": "Hänga gubbe!",
   "components.Header.restartButton": "Starta om",
 
-  "components.Play.counterPlural": "{remainingAttemptsCount} försök kvar",
-  "components.Play.counterSingular": "{remainingAttemptsCount} försök kvar",
+  "components.Play.counterPlural": "{remainingAttempts} försök kvar",
+  "components.Play.counterSingular": "{remainingAttempts} försök kvar",
   "components.Play.playMessage": "Spel på gång",
 
   "components.Result.loseMessage": "Du förlorade!",
