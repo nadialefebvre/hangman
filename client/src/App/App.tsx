@@ -17,7 +17,7 @@ const App: React.FC = () => {
   const { state } = useContext(GameContext)
   const { language, alphabet, result, phase, randomWord } = state
 
-  console.log(randomWord)
+  console.log(randomWord) // remove enventually
 
   const localeData = getLocaleData(language)
 
@@ -25,10 +25,10 @@ const App: React.FC = () => {
     (item) => item.guessStatus === GuessStatus.Wrong
   ).length
 
-  const stepToUse = phase === "RESULT" ? 8 : wrongGuessesCount
   useEffect(() => {
+    const stepToUse = phase === "RESULT" ? 8 : wrongGuessesCount
     updateFavicon(stepToUse, phase, result)
-  }, [stepToUse, phase, result])
+  }, [wrongGuessesCount, phase, result])
 
   const renderPhaseContent = () => {
     switch (phase) {
