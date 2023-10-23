@@ -4,14 +4,14 @@ import styled, { css } from "styled-components/macro"
 interface GameGridProps {
   result: string
   phase: string
-  wrongCount: number
+  wrongGuessesCount: number
   children: React.ReactNode
 }
 
 const GameGrid: React.FC<GameGridProps> = ({
   result,
   phase,
-  wrongCount,
+  wrongGuessesCount,
   children,
 }) => {
   const steps = [
@@ -35,7 +35,7 @@ const GameGrid: React.FC<GameGridProps> = ({
             rowSpan={step.rowSpan}
             colStart={step.colStart}
             colSpan={step.colSpan}
-            hasBackground={step.number <= wrongCount}
+            hasBackground={step.number <= wrongGuessesCount}
           />
         ))}
       <InnerWrapper>{children}</InnerWrapper>

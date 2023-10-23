@@ -5,17 +5,17 @@ import { useIntl } from "react-intl"
 import messages from "./messages"
 
 interface CounterProps {
-  remainingAttempts: number
+  leftTriesCount: number
 }
 
-const Counter: React.FC<CounterProps> = ({ remainingAttempts }) => {
+const Counter: React.FC<CounterProps> = ({ leftTriesCount }) => {
   const { formatMessage } = useIntl()
 
   return (
     <TextCounter>
-      {remainingAttempts < 2
-        ? formatMessage(messages.counterSingular, { remainingAttempts })
-        : formatMessage(messages.counterPlural, { remainingAttempts })}
+      {leftTriesCount < 2
+        ? formatMessage(messages.counterSingular, { leftTriesCount })
+        : formatMessage(messages.counterPlural, { leftTriesCount })}
     </TextCounter>
   )
 }

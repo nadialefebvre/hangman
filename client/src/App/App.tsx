@@ -21,11 +21,11 @@ const App: React.FC = () => {
 
   const localeData = getLocaleData(language)
 
-  const wrongCount: number = alphabet.filter(
+  const wrongGuessesCount: number = alphabet.filter(
     (item) => item.guessStatus === GuessStatus.Wrong
   ).length
 
-  const stepToUse = phase === "RESULT" ? 8 : wrongCount
+  const stepToUse = phase === "RESULT" ? 8 : wrongGuessesCount
   useEffect(() => {
     updateFavicon(stepToUse, phase, result)
   }, [stepToUse, phase, result])
@@ -33,8 +33,12 @@ const App: React.FC = () => {
   return (
     <IntlProvider locale={language} messages={localeData}>
       <GlobalStyle />
-      <GameGrid result={result} phase={phase} wrongCount={wrongCount}>
-        <Header wrongCount={wrongCount} />
+      <GameGrid
+        result={result}
+        phase={phase}
+        wrongGuessesCount={wrongGuessesCount}
+      >
+        <Header wrongGuessesCount={wrongGuessesCount} />
         {phase === "START" && <Start />}
         {phase === "PLAY" && <Play />}
         {phase === "RESULT" && <Result />}

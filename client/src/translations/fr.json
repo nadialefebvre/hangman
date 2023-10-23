@@ -6,8 +6,8 @@
   "components.Header.title": "Le pendu !",
   "components.Header.restartButton": "Recommencer",
 
-  "components.Play.counterPlural": "{remainingAttempts} essais restants",
-  "components.Play.counterSingular": "{remainingAttempts} essai restant",
+  "components.Play.counterPlural": "{leftTriesCount} essais restants",
+  "components.Play.counterSingular": "{leftTriesCount} essai restant",
   "components.Play.playMessage": "Partie en cours",
 
   "components.Result.loseMessage": "Vous avez perdu !",
