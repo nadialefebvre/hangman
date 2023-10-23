@@ -3,6 +3,7 @@ import { useIntl } from "react-intl"
 import styled from "styled-components/macro"
 
 import { GameContext } from "../../game/context"
+import { useSetDocumentTitle } from "../../hooks/useSetDocumentTitle"
 import { API_URL } from "../../utils/urls"
 import messages from "./messages"
 
@@ -10,6 +11,8 @@ const Start: React.FC = () => {
   const { state, dispatch } = useContext(GameContext)
 
   const { formatMessage } = useIntl()
+
+  useSetDocumentTitle(formatMessage(messages.startMessage))
 
   const categories: string[] = ["noun", "verb", "adjective", "adverb", "random"]
 
@@ -26,9 +29,6 @@ const Start: React.FC = () => {
       console.error("Error fetching random word:", error)
     }
   }
-
-  // document.title =
-  //   formatMessage(messages.title) + " — " + formatMessage(messages.startMessage)
 
   return (
     <>

@@ -1,4 +1,6 @@
 {
+  "global.title": "Hangman",
+
   "components.Footer.text": "by Nadia Lefebvre",
 
   "components.Header.title": "Hangman!",

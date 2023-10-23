@@ -1,13 +1,28 @@
 import { defineMessages } from "react-intl"
 
-const headerScope = "app.Header"
+const scope = "global"
 
 export default defineMessages({
-  // need to fix this one that is used a couple of places...
   title: {
-    id: `${headerScope}.title`,
-    defaultMessage: "Hangman!",
+    id: `${scope}.title`,
+    defaultMessage: "Hangman",
   },
+  // subtitleStart: {
+  //   id: `${scope}.subtitleStart`,
+  //   defaultMessage: "Make your choice",
+  // },
+  // subtitlePlay: {
+  //   id: `${scope}.subtitlePlay`,
+  //   defaultMessage: "Game in progress",
+  // },
+  // subtitleResultLose: {
+  //   id: `${scope}.subtitleResultLose`,
+  //   defaultMessage: "Sorry!",
+  // },
+  // subtitleResultWin: {
+  //   id: `${scope}.subtitleResultWin`,
+  //   defaultMessage: "Congratulations!",
+  // },
 
   alertNotALetter: {
     id: "app.alertNotALetter",

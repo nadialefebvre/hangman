@@ -4,6 +4,7 @@ import { useIntl } from "react-intl"
 import { GameContext } from "../../game/context"
 import { GuessStatus, Letter } from "../../game/types"
 import useHandleKeyDown from "../../hooks/useHandleKeyDown"
+import { useSetDocumentTitle } from "../../hooks/useSetDocumentTitle"
 import { stringWithoutDiacritics } from "../../utils/stringWithoutDiacritics"
 import Counter from "./Counter"
 import LetterButtonsContainer from "./LetterButtonsContainer"
@@ -14,6 +15,8 @@ const Play: React.FC = () => {
   const { formatMessage } = useIntl()
   const { state, dispatch } = useContext(GameContext)
   const { handleKeyDown } = useHandleKeyDown()
+
+  useSetDocumentTitle(formatMessage(messages.playMessage))
 
   const word: string = stringWithoutDiacritics(state.randomWord, state.language)
   const alphabet: Letter[] = state.alphabet
@@ -66,12 +69,6 @@ const Play: React.FC = () => {
       window.removeEventListener("keydown", handleKeyDown)
     }
   })
-
-  // maybe create a custom hook to render the document.title NEED TO CHECK!
-  // document.title =
-  //   formatMessage(messages.title) + " — " + formatMessage(messages.playMessage)
-
-  // add this to some instructions in Play: "Press ENTER or ESC to escape the game"
 
   return (
     <>

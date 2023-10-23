@@ -3,6 +3,7 @@ import { useIntl } from "react-intl"
 import styled from "styled-components/macro"
 
 import { GameContext } from "../../game/context"
+import { useSetDocumentTitle } from "../../hooks/useSetDocumentTitle"
 import ConfettisAnimation from "./ConfettisAnimation"
 import messages from "./messages"
 
@@ -10,15 +11,13 @@ const Result: React.FC = () => {
   const { state } = useContext(GameContext)
   const { formatMessage } = useIntl()
 
-  // if (state.result === "WIN") {
-  //   document.title =
-  //     formatMessage(messages.title) + " — " + formatMessage(messages.winMessage)
-  // } else if (state.result === "LOSE") {
-  //   document.title =
-  //     formatMessage(messages.title) +
-  //     " — " +
-  //     formatMessage(messages.loseMessage)
-  // }
+  let message: string = ""
+  if (state.result === "WIN") {
+    message = formatMessage(messages.winMessage)
+  } else if (state.result === "LOSE") {
+    message = formatMessage(messages.loseMessage)
+  }
+  useSetDocumentTitle(message)
 
   return (
     <>
