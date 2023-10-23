@@ -9,10 +9,8 @@ import Result from "./components/Result"
 import Start from "./components/Start/"
 import { GameContext } from "./game/context"
 import { GuessStatus, Letter } from "./game/types"
-import { buildFaviconContent } from "./utils/buildFaviconContent"
-
-const supportedLanguages: string[] = ["en", "fr", "sv"]
-const defaultLanguage: string = "en"
+import { updateFavicon } from "./utils/favicon"
+import { getLocaleData } from "./utils/translation"
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -32,14 +30,11 @@ const GlobalStyle = createGlobalStyle`
 `
 const App: React.FC = () => {
   const { state } = useContext(GameContext)
-  console.log(state.randomWord)
+  const { language, alphabet, result, phase, randomWord } = state
 
-  let localeData = require(`./translations/${defaultLanguage}.json`)
-  if (supportedLanguages.includes(state.language)) {
-    localeData = require(`./translations/${state.language}.json`)
-  }
+  console.log(randomWord)
 
-  const alphabet: Letter[] = state.alphabet
+  const localeData = getLocaleData(language)
 
   const wrongGuesses: Letter[] = alphabet.filter(
     (item: Letter) => item.guessStatus === GuessStatus.Wrong
@@ -57,25 +52,16 @@ const App: React.FC = () => {
     { number: 8, rowStart: 1, rowSpan: 4, colStart: 1, colSpan: 1 },
   ]
 
-  let stepToUse = wrongGuesses.length
-  if (state.phase === "RESULT") {
-    stepToUse = 8
-  }
-
+  const stepToUse = phase === "RESULT" ? 8 : wrongGuesses.length
   useEffect(() => {
-    const favicon = document.getElementById("favicon")
-    const svgContent = buildFaviconContent(stepToUse, state.result)
-
-    if (favicon instanceof HTMLLinkElement) {
-      favicon.href = `data:image/svg+xml,${encodeURIComponent(svgContent)}`
-    }
-  }, [stepToUse, state.result])
+    updateFavicon(stepToUse, phase, result)
+  }, [stepToUse, phase, result])
 
   return (
-    <IntlProvider locale={state.language} messages={localeData}>
+    <IntlProvider locale={language} messages={localeData}>
       <GlobalStyle />
-      <OuterWrapper result={state.result} phase={state.phase}>
-        {state.phase === "PLAY" &&
+      <OuterWrapper result={result} phase={phase}>
+        {phase === "PLAY" &&
           steps.map((step) => (
             <Step
               key={step.number}
@@ -88,9 +74,9 @@ const App: React.FC = () => {
           ))}
         <InnerWrapper>
           <Header wrongGuessesCount={wrongGuesses.length} />
-          {state.phase === "START" && <Start />}
-          {state.phase === "PLAY" && <Play />}
-          {state.phase === "RESULT" && <Result />}
+          {phase === "START" && <Start />}
+          {phase === "PLAY" && <Play />}
+          {phase === "RESULT" && <Result />}
           <Footer />
         </InnerWrapper>
       </OuterWrapper>

@@ -1,9 +1,17 @@
-export const buildFaviconContent = (stepToUse: number, result: string) => {
-  let fillColor = "black"
-  if (result === "WIN") {
-    fillColor = "green"
-  } else if (result === "LOSE") {
-    fillColor = "red"
+const buildFaviconContent = (
+  stepToUse: number,
+  phase: string,
+  result: string
+) => {
+  let fillColor
+  if (phase !== "RESULT") {
+    fillColor = "black"
+  } else {
+    if (result === "WIN") {
+      fillColor = "green"
+    } else if (result === "LOSE") {
+      fillColor = "red"
+    }
   }
 
   // gallows
@@ -105,4 +113,17 @@ export const buildFaviconContent = (stepToUse: number, result: string) => {
   faviconContent += "</svg>"
 
   return faviconContent
+}
+
+export const updateFavicon = (
+  stepToUse: number,
+  phase: string,
+  result: string
+) => {
+  const favicon = document.getElementById("favicon")
+  const svgContent = buildFaviconContent(stepToUse, phase, result)
+
+  if (favicon instanceof HTMLLinkElement) {
+    favicon.href = `data:image/svg+xml,${encodeURIComponent(svgContent)}`
+  }
 }
