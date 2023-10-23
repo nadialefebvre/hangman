@@ -30,6 +30,19 @@ const App: React.FC = () => {
     updateFavicon(stepToUse, phase, result)
   }, [stepToUse, phase, result])
 
+  const renderPhaseContent = () => {
+    switch (phase) {
+      case "START":
+        return <Start />
+      case "PLAY":
+        return <Play />
+      case "RESULT":
+        return <Result />
+      default:
+        return null
+    }
+  }
+
   return (
     <IntlProvider locale={language} messages={localeData}>
       <GlobalStyle />
@@ -39,9 +52,7 @@ const App: React.FC = () => {
         wrongGuessesCount={wrongGuessesCount}
       >
         <Header wrongGuessesCount={wrongGuessesCount} />
-        {phase === "START" && <Start />}
-        {phase === "PLAY" && <Play />}
-        {phase === "RESULT" && <Result />}
+        {renderPhaseContent()}
         <Footer />
       </GameGrid>
     </IntlProvider>
