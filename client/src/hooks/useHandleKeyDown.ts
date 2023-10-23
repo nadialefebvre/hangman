@@ -8,9 +8,8 @@ import useGuessOneLetter from "./useGuessOneLetter"
 
 const useHandleKeyDown = () => {
   const { state, dispatch } = useContext(GameContext)
-  const { language, alphabet } = state
+  const { language, phase, alphabet } = state
   const { formatMessage } = useIntl()
-
   const { guessOneLetter } = useGuessOneLetter()
 
   const endOfAlphabet: string =
@@ -19,34 +18,41 @@ const useHandleKeyDown = () => {
   const isLetter = (key: string): boolean =>
     language === "sv" ? /^[a-zåöä]$/.test(key) : /^[a-z]$/.test(key)
 
-  const isRestartKeyPressed = (key: string): boolean =>
-    key === "enter" || key === "escape"
+  const isRestartKeyPressed = (key: string): boolean => key === "escape"
 
-  const handleKeyDown = (event: KeyboardEvent) => {
-    const key: string = event.key.toLowerCase()
+  const handleKeyDown = (e: KeyboardEvent) => {
+    const key = e.key.toLowerCase()
 
-    const letterIndex: number = alphabet.findIndex(
+    const letterIndex = alphabet.findIndex(
       (letter: Letter) => letter.character === key
     )
 
-    if (isLetter(key)) {
-      if (alphabet[letterIndex].guessStatus === GuessStatus.Correct) {
-        alert(
-          formatMessage(messages.alertCorrectGuess, {
-            letter: key.toUpperCase(),
-          })
-        )
-      } else if (alphabet[letterIndex].guessStatus === GuessStatus.Wrong) {
-        alert(
-          formatMessage(messages.alertWrongGuess, { letter: key.toUpperCase() })
-        )
-      } else {
-        guessOneLetter(key)
-      }
-    } else if (isRestartKeyPressed(key)) {
+    if (isRestartKeyPressed(key)) {
       dispatch({ type: "RESET_GAME" })
-    } else if (key.length === 1) {
-      alert(formatMessage(messages.alertNotALetter, { endOfAlphabet }))
+    } else if (phase === "PLAY") {
+      if (isLetter(key)) {
+        const currentLetter = alphabet[letterIndex]
+        const isCorrect = currentLetter.guessStatus === GuessStatus.Correct
+        const isWrong = currentLetter.guessStatus === GuessStatus.Wrong
+
+        if (isCorrect) {
+          alert(
+            formatMessage(messages.alertCorrectGuess, {
+              letter: key.toUpperCase(),
+            })
+          )
+        } else if (isWrong) {
+          alert(
+            formatMessage(messages.alertWrongGuess, {
+              letter: key.toUpperCase(),
+            })
+          )
+        } else {
+          guessOneLetter(key)
+        }
+      } else if (key.length === 1) {
+        alert(formatMessage(messages.alertNotALetter, { endOfAlphabet }))
+      }
     }
   }
 

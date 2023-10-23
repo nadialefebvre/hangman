@@ -26,13 +26,15 @@ const Play: React.FC = () => {
   const leftTriesCount: number = 8 - wrongGuessesCount
 
   const isGameWon = useCallback((): boolean => {
-    return word.split("").every((wordLetter) => {
-      return alphabet.find(
-        (letter) =>
-          letter.character === wordLetter &&
-          letter.guessStatus === GuessStatus.Correct
+    return word
+      .split("")
+      .every((wordLetter) =>
+        alphabet.find(
+          (letter) =>
+            letter.character === wordLetter &&
+            letter.guessStatus === GuessStatus.Correct
+        )
       )
-    })
   }, [alphabet, word])
 
   const isGameLost: boolean = leftTriesCount === 0
@@ -40,11 +42,9 @@ const Play: React.FC = () => {
   useEffect(() => {
     // issue without timeout: should be solved now
     if (isGameWon() || isGameLost) {
-      if (isGameWon()) {
-        dispatch({ type: "UPDATE_RESULT", payload: "WIN" })
-      } else if (isGameLost) {
-        dispatch({ type: "UPDATE_RESULT", payload: "LOSE" })
-      }
+      const result = isGameWon() ? "WIN" : "LOSE"
+      dispatch({ type: "UPDATE_RESULT", payload: result })
+
       setTimeout(() => {
         dispatch({ type: "UPDATE_PHASE", payload: "RESULT" })
       }, 3000)
@@ -61,12 +61,14 @@ const Play: React.FC = () => {
       document.activeElement.blur()
     }
 
+    const handleKeyDownListener = (e: KeyboardEvent) => handleKeyDown(e)
+
     if (!isGameLost && !isGameWon()) {
-      window.addEventListener("keydown", handleKeyDown)
+      window.addEventListener("keydown", handleKeyDownListener)
     }
 
     return () => {
-      window.removeEventListener("keydown", handleKeyDown)
+      window.removeEventListener("keydown", handleKeyDownListener)
     }
   })
 
