@@ -1,6 +1,6 @@
 import React from "react"
 import { useIntl } from "react-intl"
-import styled from "styled-components"
+import styled from "styled-components/macro"
 
 import messages from "./messages"
 
