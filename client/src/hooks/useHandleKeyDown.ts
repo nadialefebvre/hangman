@@ -6,7 +6,7 @@ import { GuessStatus, Letter } from "../game/types"
 import messages from "../messages"
 import useGuessOneLetter from "./useGuessOneLetter"
 
-const useHandleKeyDown = () => {
+const useHandleKeyDown = (displayModal?: any) => {
   const { state, dispatch } = useContext(GameContext)
   const { language, phase, alphabet } = state
   const { formatMessage } = useIntl()
@@ -36,13 +36,13 @@ const useHandleKeyDown = () => {
         const isWrong = currentLetter.guessStatus === GuessStatus.Wrong
 
         if (isCorrect) {
-          alert(
+          displayModal(
             formatMessage(messages.alertCorrectGuess, {
               letter: key.toUpperCase(),
             })
           )
         } else if (isWrong) {
-          alert(
+          displayModal(
             formatMessage(messages.alertWrongGuess, {
               letter: key.toUpperCase(),
             })
@@ -51,7 +51,7 @@ const useHandleKeyDown = () => {
           guessOneLetter(key)
         }
       } else if (key.length === 1) {
-        alert(formatMessage(messages.alertNotALetter, { endOfAlphabet }))
+        displayModal(formatMessage(messages.alertNotALetter, { endOfAlphabet }))
       }
     }
   }

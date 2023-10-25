@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect } from "react"
+import React, { useCallback, useContext, useEffect, useState } from "react"
 import { useIntl } from "react-intl"
 
 import { GameContext } from "../../game/context"
@@ -6,6 +6,7 @@ import { GuessStatus, Letter } from "../../game/types"
 import useHandleKeyDown from "../../hooks/useHandleKeyDown"
 import useSetDocumentTitle from "../../hooks/useSetDocumentTitle"
 import { stringWithoutDiacritics } from "../../utils/stringWithoutDiacritics"
+import AlertModal from "../AlertModal"
 import Counter from "./Counter"
 import LetterButtonsContainer from "./LetterButtonsContainer"
 import Word from "./Word"
@@ -15,7 +16,19 @@ const Play: React.FC = () => {
   const { formatMessage } = useIntl()
   const { state, dispatch } = useContext(GameContext)
   const { language, randomWord, alphabet } = state
-  const { handleKeyDown } = useHandleKeyDown()
+  const [modalMessage, setModalMessage] = useState("")
+  const [isModalVisible, setIsModalVisible] = useState(false)
+
+  const displayModal = (message: string) => {
+    setModalMessage(message)
+    setIsModalVisible(true)
+  }
+
+  const hideModal = () => {
+    setIsModalVisible(false)
+  }
+
+  const { handleKeyDown } = useHandleKeyDown(displayModal)
 
   useSetDocumentTitle(formatMessage(messages.playMessage))
 
@@ -77,6 +90,9 @@ const Play: React.FC = () => {
       <Counter leftTriesCount={leftTriesCount} />
       <LetterButtonsContainer />
       <Word />
+      {isModalVisible && (
+        <AlertModal message={modalMessage} onHideModal={hideModal} />
+      )}
     </>
   )
 }
