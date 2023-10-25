@@ -76,7 +76,7 @@ const Play: React.FC = () => {
 
     const handleKeyDownListener = (e: KeyboardEvent) => handleKeyDown(e)
 
-    if (!isGameLost && !isGameWon()) {
+    if (!isGameLost && !isGameWon() && !isModalVisible) {
       window.addEventListener("keydown", handleKeyDownListener)
     }
 
