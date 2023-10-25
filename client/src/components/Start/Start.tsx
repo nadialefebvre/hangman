@@ -7,7 +7,11 @@ import useSetDocumentTitle from "../../hooks/useSetDocumentTitle"
 import { API_URL } from "../../utils/urls"
 import messages from "./messages"
 
-const Start: React.FC = () => {
+interface StartProps {
+  setIsLoading: (isLoading: boolean) => void
+}
+
+const Start: React.FC<StartProps> = ({ setIsLoading }) => {
   const { state, dispatch } = useContext(GameContext)
   const { language } = state
   const { formatMessage } = useIntl()
@@ -17,11 +21,17 @@ const Start: React.FC = () => {
   const categories: string[] = ["noun", "verb", "adjective", "adverb", "random"]
 
   const fetchRandomWord = async (category: string, language: string) => {
+    setIsLoading(true)
     try {
       const response = await fetch(API_URL(category, language))
-      if (!response.ok) {
+
+      if (response.ok) {
+        setIsLoading(false)
+        console.log("not loading") // remove eventually
+      } else if (!response.ok) {
         throw new Error("Failed to fetch random word")
       }
+
       const data = await response.json()
       dispatch({ type: "UPDATE_PHASE", payload: "PLAY" })
       dispatch({ type: "SET_RANDOM_WORD", payload: data })

@@ -1,9 +1,10 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { IntlProvider } from "react-intl"
 
 import Footer from "../components/Footer"
 import GameGrid from "../components/GameGrid"
 import Header from "../components/Header"
+import Loading from "../components/Loading"
 import Play from "../components/Play"
 import Result from "../components/Result"
 import Start from "../components/Start"
@@ -16,8 +17,9 @@ import GlobalStyle from "./GlobalStyle"
 const App: React.FC = () => {
   const { state } = useContext(GameContext)
   const { language, alphabet, result, phase, randomWord } = state
+  const [isLoading, setIsLoading] = useState(false)
 
-  console.log(randomWord) // remove enventually
+  console.log(randomWord) // remove eventually
 
   const localeData = getLocaleData(language)
 
@@ -31,15 +33,19 @@ const App: React.FC = () => {
   }, [wrongGuessesCount, phase, result])
 
   const renderPhaseContent = () => {
-    switch (phase) {
-      case "START":
-        return <Start />
-      case "PLAY":
-        return <Play />
-      case "RESULT":
-        return <Result />
-      default:
-        return null
+    if (isLoading) {
+      return <Loading />
+    } else {
+      switch (phase) {
+        case "START":
+          return <Start setIsLoading={setIsLoading} />
+        case "PLAY":
+          return <Play />
+        case "RESULT":
+          return <Result />
+        default:
+          return null
+      }
     }
   }
 
