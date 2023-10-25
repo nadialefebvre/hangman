@@ -51,6 +51,7 @@ export default Result
 
 const StyledText = styled.p`
   font-size: 32px;
+  text-align: center;
 `
 
 const StyledTextBig = styled.span`
