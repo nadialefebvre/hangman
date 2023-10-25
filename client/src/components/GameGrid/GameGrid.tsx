@@ -58,7 +58,7 @@ const OuterWrapper = styled.div<{ result: string; phase: string }>`
         `
       : result === "WIN" && phase === "RESULT"
       ? css`
-          background-image: url("./assets/paper-texture2.jpg");
+          background-image: url("./assets/paper-texture.png");
           background-size: cover;
         `
       : css`
